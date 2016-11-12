@@ -10,6 +10,9 @@ Fork this project, create a new branch, commit all changes and create a pull req
 
 If you want to help translate this project create a new file into lang/ directory named: __message.__*languagecode*__.php__. Use the file __message.en.php__ as a guide.
 
+## How to clone
+[Download](https://github.com/franci22/BNoteBot/releases) a release, unzip, execute __create_table.SQL__ to create tables in your MySQL Database, setup __config.php__ and set [Telegram webhook](https://core.telegram.org/bots/api#setwebhook) to __bot.php__ file.
+
 ## Make a donation
 If you like my work, you could make a donation: [PayPal](https://PayPal.me/franci22/2) or [Coinbase](https://coinbase.com/franci22).
 **Thanks!**
