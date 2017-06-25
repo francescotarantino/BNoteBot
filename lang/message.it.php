@@ -3,7 +3,8 @@ $lang = array();
 $lang['welcome'] = "Benvenuto nel Bot!\xF0\x9F\x98\x8A
 Con questo Bot puoi salvare delle note richiamabili attraverso la modalità inline! Puoi anche impostare dei promemoria!
 \xF0\x9F\x93\x9D - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!
-\xE2\x9C\x85 - Ricordati di seguirmi sul canale @franci22channel per tutte le comunicazioni.";
+\xE2\x9C\x85 - Ricordati di seguirmi sul canale @franci22channel per tutte le comunicazioni.
+\xF0\x9F\x92\x9A - Se ti piace questo bot, scopri come supportarmi premendo il tasto Supportami \xF0\x9F\x92\x9A.";
 $lang['addmemo'] = "Aggiungi nota \xF0\x9F\x93\x9D";
 $lang['info'] = "Info \xE2\x84\xB9";
 $lang['vote'] = "Vota \xE2\xAD\x90";
@@ -59,4 +60,10 @@ $lang['currenttimezone'] = "Timezone corrente: ";
 $lang['defaulttimezone'] = "Timezone di default \xF0\x9F\x8C\x8D";
 $lang['edit'] = "Modifica \xF0\x9F\x93\x9D";
 $lang['edittxt'] = "Inviami il nuovo testo della nota \xF0\x9F\x93\x9D";
+$lang['reminders'] = "Promemoria: \xF0\x9F\x95\x92";
+$lang['uhareminders'] = "Hai già dei promemoria per questa nota: \xF0\x9F\x95\x92";
+$lang['supportme'] = "Supportami \xF0\x9F\x92\x9A";
+$lang['supportmetext'] = "I miei Bot sono gratuiti e privi di pubblicità, puoi supportarmi facendo una piccola donazione via PayPal o BitCoin, iscrivendoti al mio canale (@franci22channel) e votando il Bot su @StoreBot. Grazie \xF0\x9F\x92\x9A";
+$lang['github'] = "GitHub \xF0\x9F\x93\x82";
+$lang['opensource'] = "Questo Bot è open source sotto licenza MIT, puoi trovarne il codice completo su GitHub.";
 ?>
