@@ -68,6 +68,15 @@ if($lang == "it"){
         $timezone = "America/Brasilia";
     }
     date_default_timezone_set($timezone);
+} else if($lang == "ru"){
+    include($langdir . 'message.en.php');
+    include($langdir . 'message.ru.php');
+    $dateformat = "d-m-Y H:i:s";
+    $dateformatnosec = "d-m-Y H:i";
+    if($timezone == FALSE){
+        $timezone = "Europe/Moscow";
+    }
+    date_default_timezone_set($timezone);
 }
 
 if($inline){
@@ -309,12 +318,12 @@ if($status == "select"){
         $dbuser->query("UPDATE BNoteBot_user SET lang='pt' WHERE userID='$userID'");
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
     } else if($msg == "Russian \xF0\x9F\x87\xB7\xF0\x9F\x87\xBA"){
-        include('message.ru.php');
+        include($langdir . 'message.ru.php');
         menu($chatID, $lang['welcome'], $lang);
         $dbuser->query("UPDATE BNoteBot_user SET lang='ru' WHERE userID='$userID'");
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
     } else {
-        $msg == "/start";
+        langmenu($chatID);
     }
 } else if($status == "addmemo"){
     if($msg == $lang['cancel']){
@@ -350,6 +359,8 @@ if($status == "select"){
             $menu[] = array($lang['defaulttimezone']);
             $menu[] = array($lang['cancel']);
             sm($chatID, $lang['settimezonetxt'] . "\n\n" . $lang['currenttimezone'] . $timezone, $menu);
+        } else {
+            sm($chatID, $lang['messagenovalid']);
         }
     }
 } else if($status == "timezone"){
@@ -499,11 +510,7 @@ if($status == "select"){
     } else {
         switch ($msg){
             case '/start':
-                $text = "\xF0\x9F\x87\xAC\xF0\x9F\x87\xA7 - Welcome! Select a language:
-\xF0\x9F\x87\xAE\xF0\x9F\x87\xB9 - Benvenuto! Seleziona una lingua:
-\xF0\x9F\x87\xA7\xF0\x9F\x87\xB7 - Bem-vindo! Escolha um idioma:
-\xF0\x9F\x87\xB7\xF0\x9F\x87\xBA - Добро пожаловать! Выберите язык:";
-                langmenu($chatID, $text);
+                langmenu($chatID);
                 $dbuser->query("UPDATE BNoteBot_user SET status='select' WHERE userID='$userID'");
                 break;
             case '/start settingsinline':
@@ -516,7 +523,11 @@ if($status == "select"){
     }
 }
 
-function langmenu($chatID, $text){
+function langmenu($chatID){
+    $text = "\xF0\x9F\x87\xAC\xF0\x9F\x87\xA7 - Welcome! Select a language:
+\xF0\x9F\x87\xAE\xF0\x9F\x87\xB9 - Benvenuto! Seleziona una lingua:
+\xF0\x9F\x87\xA7\xF0\x9F\x87\xB7 - Bem-vindo! Escolha um idioma:
+\xF0\x9F\x87\xB7\xF0\x9F\x87\xBA - Добро пожаловать! Выберите язык:";
     $menu[] = array("English \xF0\x9F\x87\xAC\xF0\x9F\x87\xA7");
     $menu[] = array("Italiano \xF0\x9F\x87\xAE\xF0\x9F\x87\xB9");
     $menu[] = array("Português \xF0\x9F\x87\xA7\xF0\x9F\x87\xB7");
