@@ -65,5 +65,5 @@ $lang['uhareminders'] = "Hai già dei promemoria per questa nota: \xF0\x9F\x95\x
 $lang['supportme'] = "Supportami \xF0\x9F\x92\x9A";
 $lang['supportmetext'] = "I miei Bot sono gratuiti e privi di pubblicità, puoi supportarmi facendo una piccola donazione via PayPal o BitCoin, iscrivendoti al mio canale (@franci22channel) e votando il Bot su @StoreBot. Grazie \xF0\x9F\x92\x9A";
 $lang['github'] = "GitHub \xF0\x9F\x93\x82";
-$lang['opensource'] = "Questo Bot è open source sotto licenza MIT, puoi trovarne il codice completo su GitHub.";
+$lang['opensource'] = "Questo Bot è open source sotto licenza GPL 3.0, puoi trovarne il codice completo su GitHub.";
 ?>
