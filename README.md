@@ -14,7 +14,9 @@ If you want to help translate this project create a new file into lang/ director
 [Download](https://github.com/franci22/BNoteBot/releases) a release, unzip, execute __create_table.SQL__ to create tables in your MySQL Database, setup __config.php__ and set [Telegram webhook](https://core.telegram.org/bots/api#setwebhook) to __bot.php__ file.
 
 #### How to setup the webhook
-Make sure that you're using this URL: `https://api.telegram.org/botTOKEN/setWebhook?url=BOTURL`
+You can simply run `setWebhook.php`.
+
+If you want to do it manually use this URL: `https://api.telegram.org/botTOKEN/setWebhook?url=BOTURL`
 
 For example: `https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11/setWebhook?url=https://domain.com/bot.php`
 
