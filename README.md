@@ -12,6 +12,7 @@ If you want to help translate this project create a new file into lang/ director
 
 ## How to clone
 [Download](https://github.com/franci22/BNoteBot/releases) a release, unzip, execute __create_table.SQL__ to create tables in your MySQL Database, setup __config.php__ and set [Telegram webhook](https://core.telegram.org/bots/api#setwebhook) to __bot.php__ file.
+After that you should execute `cronjob.php` every minute, just setup a cron-job.
 
 #### How to setup the webhook
 You can simply run `setWebhook.php`.
