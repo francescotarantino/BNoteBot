@@ -167,7 +167,7 @@ if($inline){
                 $counter = 1;
                 while ($row = $result->fetch_assoc()) {
                     $reminders = $reminders . $counter . ". " . date($dateformatnosec, $row["timestamp"]) . "\n";
-                    $counter = $counter + 1;
+                    $counter++;
                 }
                 $reminders = "\n\n" . $lang['reminders'] . "\n" . $reminders;
             }
@@ -203,7 +203,7 @@ if($inline){
                 $counter = 1;
                 while ($row = $result->fetch_assoc()) {
                     $reminders = $reminders . $counter . ". " . date($dateformatnosec, $row["timestamp"]) . "\n";
-                    $counter = $counter + 1;
+                    $counter++;
                 }
                 $reminders = "\n\n" . $lang['reminders'] . "\n" . $reminders;
             }
@@ -277,7 +277,7 @@ if($inline){
                 $counter = 1;
                 while ($row = $result->fetch_assoc()) {
                     $reminders = $reminders . $counter . ". " . date($dateformatnosec, $row["timestamp"]) . "\n";
-                    $counter = $counter + 1;
+                    $counter++;
                 }
                 $reminders = "\n\n" . $lang['uhareminders'] . "\n" . $reminders . "\n";
             }
@@ -463,7 +463,7 @@ if($status == "select"){
                     $counter = 1;
                     while ($row = $result->fetch_assoc()) {
                         $reminders = $reminders . $counter . ". " . date($dateformatnosec, $row["timestamp"]) . "\n";
-                        $counter = $counter + 1;
+                        $counter++;
                     }
                     $reminders = "\n\n" . $lang['reminders'] . "\n" . $reminders;
                 }
