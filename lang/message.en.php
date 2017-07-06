@@ -43,8 +43,8 @@ $lang['feedbacktext'] = "\xF0\x9F\x93\xAB - If this Bot has problems or you want
 $lang['thanksfeedback'] = "Thanks for the feedback! \xE2\x9C\x85";
 $lang['onlytxt'] = "Bot supports only text for now.";
 $lang['github'] = "GitHub \xF0\x9F\x93\x82";
-
-$lang['remindme'] = "Remind me \xF0\x9F\x95\x92";
+//Missing in message.pt.php
+$lang['remindme'] = "Reminder \xF0\x9F\x95\x92";
 $lang['remindmetxt'] = "When you want to remember this note? \xF0\x9F\x95\x92";
 $lang['remindersaved'] = "Reminder saved! \xE2\x9C\x85";
 $lang['remindmetut'] = "How to write the date \xF0\x9F\x93\x85";
@@ -67,4 +67,11 @@ $lang['uhareminders'] = "You already have reminders for this memo: \xF0\x9F\x95\
 $lang['supportme'] = "Support Me \xF0\x9F\x92\x9A";
 $lang['supportmetext'] = "My bots are free and without advertisement, you can support me by making a little donation with PayPal or BitCoin and voting my bot on @StoreBot. Thank you so much \xF0\x9F\x92\x9A";
 $lang['opensource'] = "This bot is open source under GPL 3.0 License, you can find the code on GitHub.";
+//Missing in message.pt.php and message.ru.php
+$lang['reminderman'] = "Reminder management \xF0\x9F\x95\x92";
+$lang['add'] = "Add \xE2\x9E\x95";
+$lang['deletereminder'] = "Choose which reminder to delete \xE2\x9D\x8C:";
+$lang['deletedreminder'] = "Deleted reminder! \xE2\x9D\x8C";
+$lang['noreminder'] = "You don't have any reminder! \xF0\x9F\x95\x92";
+$lang['deleteall'] = "Delete everything \xE2\x9D\x8C";
 ?>
