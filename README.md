@@ -1,7 +1,7 @@
 # BNoteBot
 Telegram Bot for save notes callable through inline mode and set reminders!
 
-![Logo BNoteBot](https://franci22.ml/wp-content/uploads/2016/10/wKJR1GNyHAl9gAAAABJRU5ErkJggg.png)
+![Logo BNoteBot](https://raw.githubusercontent.com/franci22/BNoteBot/master/Logo.png)
 
 Telegram Username: [@BNoteBot](https://telegram.me/BNoteBot)
 
