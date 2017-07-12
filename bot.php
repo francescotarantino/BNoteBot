@@ -282,7 +282,7 @@ if($inline){
                   $counter++;
               }
               $reminders = $lang['uhareminders'] . "\n" . $reminders . "\n";
-              if ($userID == "31507896") $menur[] = array(array(
+              $menur[] = array(array(
                 "text" => $lang['delete'],
                 "callback_data" => "deletereminder-" . $data[1] . "-" . $set[$data[2]]['id'] . "-" . $data[2]
               ));
