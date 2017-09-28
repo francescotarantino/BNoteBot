@@ -189,7 +189,7 @@ if($inline){
                 "text" => $lang['delete'],
                 "callback_data" => "delete-" . $data[1] . "-" . $i), array(
                 "text" => $lang['edit'],
-                "callback_data" => "edit-" . $json['result']['message_id'] . "-0"));
+                "callback_data" => "edit-" . $data[1] . "-" . $i));
             $menu[] = array(array(
                 "text" => $lang['remindme'],
                 "callback_data" => "reminder-" . $data[1] . "-" . $i), array(
@@ -218,7 +218,7 @@ if($inline){
                 "text" => $lang['delete'],
                 "callback_data" => "delete-" . $data[1] . "-" . $i), array(
                 "text" => $lang['edit'],
-                "callback_data" => "edit-" . $json['result']['message_id'] . "-0"));
+                "callback_data" => "edit-" . $data[1] . "-" . $i));
             $menu[] = array(array(
                 "text" => $lang['remindme'],
                 "callback_data" => "reminder-" . $data[1] . "-" . $i), array(
@@ -234,7 +234,7 @@ if($inline){
                 "text" => $lang['delete'],
                 "callback_data" => "delete-" . $data[1] . "-" . $i), array(
                 "text" => $lang['edit'],
-                "callback_data" => "edit-" . $json['result']['message_id'] . "-0"));
+                "callback_data" => "edit-" . $data[1] . "-" . $i));
             $menu[] = array(array(
                 "text" => $lang['remindme'],
                 "callback_data" => "reminder-" . $data[1] . "-" . $i), array(
