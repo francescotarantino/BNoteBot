@@ -416,30 +416,6 @@ if($status == "select"){
         }
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
     }
-} else if($status == "settings"){
-    if($msg == $lang['cancel']){
-        $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
-        menu($chatID, $lang['cancelled'], $lang);
-    } else {
-        if($msg == $lang['inlinemode']){
-            inlinemodeset($chatID, $lang, $invertmemodata);
-        } else if($msg == $lang['deleteallnote']){
-            $json = sm($chatID, $lang['askdeleteallnote']);
-            $menu[] = array(array(
-                "text" => $lang['delete'],
-                "callback_data" => "confdeleteall-" .  $json['result']['message_id']), array(
-                "text" => $lang['no'],
-                "callback_data" => "confdeleteallno-" . $json['result']['message_id']));
-            em($chatID, $json['result']['message_id'], $lang['askdeleteallnote'], $menu, true);
-        } else if($msg == $lang['settimezone']){
-            $dbuser->query("UPDATE BNoteBot_user SET status='timezone' WHERE userID='$userID'");
-            $menu[] = array($lang['defaulttimezone']);
-            $menu[] = array($lang['cancel']);
-            sm($chatID, $lang['settimezonetxt'] . "\n\n" . $lang['currenttimezone'] . $timezone, $menu);
-        } else {
-            sm($chatID, $lang['messagenovalid']);
-        }
-    }
 } else if($status == "timezone"){
     if($msg == $lang['cancel']){
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
@@ -524,7 +500,6 @@ if($status == "select"){
         $menu[] = array($lang['cancel']);
         sm($chatID, $lang['addmemotext'], $menu, 'HTML', false, false, true);
     } else if($msg == $lang['settings']){
-        $dbuser->query("UPDATE BNoteBot_user SET status='settings' WHERE userID='$userID'");
         setmenu($chatID, $lang['settings'], $lang);
     } else if($msg == $lang['feedback']){
         $dbuser->query("UPDATE BNoteBot_user SET status='feedback' WHERE userID='$userID'");
@@ -584,6 +559,23 @@ if($status == "select"){
             "url" => "https://paste.ubuntu.com/24299810/"
             ));
         sm($chatID, $lang['supportmetext'], $menu, 'HTML', false, false, false, true);
+    } else if($msg == $lang['inlinemode']){
+        inlinemodeset($chatID, $lang, $invertmemodata);
+    } else if($msg == $lang['deleteallnote']){
+        $json = sm($chatID, $lang['askdeleteallnote']);
+        $menu[] = array(array(
+            "text" => $lang['delete'],
+            "callback_data" => "confdeleteall-" .  $json['result']['message_id']), array(
+            "text" => $lang['no'],
+            "callback_data" => "confdeleteallno-" . $json['result']['message_id']));
+        em($chatID, $json['result']['message_id'], $lang['askdeleteallnote'], $menu, true);
+    } else if($msg == $lang['settimezone']){
+        $dbuser->query("UPDATE BNoteBot_user SET status='timezone' WHERE userID='$userID'");
+        $menu[] = array($lang['defaulttimezone']);
+        $menu[] = array($lang['cancel']);
+        sm($chatID, $lang['settimezonetxt'] . "\n\n" . $lang['currenttimezone'] . $timezone, $menu);
+    } else if($msg == $lang['cancel']){
+        menu($chatID, $lang['cancelled'], $lang);
     } else {
         switch ($msg){
             case '/start':
@@ -594,7 +586,7 @@ if($status == "select"){
                 inlinemodeset($chatID, $lang, $invertmemodata);
                 break;
             default:
-                if ($update["message"]) {
+                if ($update["message"]["text"]) {
                   sm($chatID, $lang['messagenovalid']);
                 }
                 break;
