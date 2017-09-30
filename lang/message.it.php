@@ -72,5 +72,5 @@ $lang['deletereminder'] = "Scegli quale promemoria eliminare ❌:";
 $lang['deletedreminder'] = "Promemoria eliminato! ❌";
 $lang['noreminder'] = "Non hai nessun promemoria! 🕒";
 $lang['deleteall'] = "Elimina tutti ❌";
-$lang['showmore'] = "Mostra di più 🔻";
+$lang['showmore'] = "Altro 🔻";
 ?>

@@ -186,13 +186,11 @@ if($update["inline_query"]["id"]){
             $menu[] = array(array(
                 "text" => $lang['delete'],
                 "callback_data" => "delete-0-" . $i), array(
-                "text" => $lang['edit'],
-                "callback_data" => "edit-0-" . $i));
-            $menu[] = array(array(
                 "text" => $lang['remindme'],
-                "callback_data" => "reminder-0-" . $i), array(
-                "text" => $lang['date'],
-                "callback_data" => "retrodate-0-" . $i));
+                "callback_data" => "reminder-0-" . $i));
+            $menu[] = array(array(
+                "text" => $lang['showmore'],
+                "callback_data" => "showmore-0-" . $i));
         }
     } else if($data[0] == "back"){
         $i = $data[2] - 1;
@@ -212,33 +210,21 @@ if($update["inline_query"]["id"]){
             $menu[] = array(array(
                 "text" => $lang['next'],
                 "callback_data" => "next-0-" . $i));
-            $menu[] = array(array(
-                "text" => $lang['delete'],
-                "callback_data" => "delete-0-" . $i), array(
-                "text" => $lang['edit'],
-                "callback_data" => "edit-0-" . $i));
-            $menu[] = array(array(
-                "text" => $lang['remindme'],
-                "callback_data" => "reminder-0-" . $i), array(
-                "text" => $lang['date'],
-                "callback_data" => "retrodate-0-" . $i));
         } else {
             $menu[] = array(array(
                 "text" => $lang['back'],
                 "callback_data" => "back-0-" . $i), array(
                 "text" => $lang['next'],
                 "callback_data" => "next-0-" . $i));
-            $menu[] = array(array(
-                "text" => $lang['delete'],
-                "callback_data" => "delete-0-" . $i), array(
-                "text" => $lang['edit'],
-                "callback_data" => "edit-0-" . $i));
-            $menu[] = array(array(
-                "text" => $lang['remindme'],
-                "callback_data" => "reminder-0-" . $i), array(
-                "text" => $lang['date'],
-                "callback_data" => "retrodate-0-" . $i));
         }
+        $menu[] = array(array(
+            "text" => $lang['delete'],
+            "callback_data" => "delete-0-" . $i), array(
+            "text" => $lang['remindme'],
+            "callback_data" => "reminder-0-" . $i));
+        $menu[] = array(array(
+            "text" => $lang['showmore'],
+            "callback_data" => "showmore-0-" . $i));
     } else if($data[0] == "delete"){
         $text = $set[$data[2]]['memo'] . "\n\n" . $lang['confdelete'];
         $menu[] = array(array(
@@ -289,7 +275,7 @@ if($update["inline_query"]["id"]){
       if ($data[3] == "em") {
         em($userID, $msgid, $lang['reminderman'] . "\n\n" . $reminders, $menur, true);
       } else {
-        sm($userID, $lang['reminderman'] . "\n\n" . $reminders, $menur, 'HTML', false, false, false, true);
+        sm($userID, $lang['reminderman'] . "\n\n" . $reminders, $menur, false, false, false, false, true);
       }
     } else if($data[0] == "remindme"){
         $text = $lang['reminderman'];
@@ -368,8 +354,31 @@ if($update["inline_query"]["id"]){
         $dbuser->query("UPDATE BNoteBot_user SET status='edit-" . $data[2] . "' WHERE userID='$userID'");
         $menur[] = array($lang['cancel']);
         sm($userID, $lang['edittxt'], $menur);
+    } else if ($data[0] == "showmore") {
+        if($data[2] == 0){
+            $menu[] = array(array(
+                "text" => $lang['next'],
+                "callback_data" => "next-0-" . $data[2]));
+        } else {
+            $menu[] = array(array(
+                "text" => $lang['back'],
+                "callback_data" => "back-0-" . $data[2]), array(
+                "text" => $lang['next'],
+                "callback_data" => "next-0-" . $data[2]));
+        }
+        $menu[] = array(array(
+            "text" => $lang['delete'],
+            "callback_data" => "delete-0-" . $data[2]), array(
+            "text" => $lang['remindme'],
+            "callback_data" => "reminder-0-" . $data[2]));
+        $menu[] = array(array(
+            "text" => $lang['edit'],
+            "callback_data" => "edit-0-" . $data[2]), array(
+            "text" => $lang['date'],
+            "callback_data" => "retrodate-0-" . $data[2]));
+        emk($chatID, $msgid, $menu);
     }
-    em($userID, $update["callback_query"]["message"]["message_id"], $text, $menu, true);
+    em($userID, $msgid, $text, $menu, true);
     acq($update["callback_query"]["id"], $textalert, $alert);
 }
 
@@ -524,14 +533,12 @@ if($status == "select"){
             $menu[] = array(array(
                 "text" => $lang['delete'],
                 "callback_data" => "delete-0-0"), array(
-                "text" => $lang['edit'],
-                "callback_data" => "edit-0-0"));
-            $menu[] = array(array(
                 "text" => $lang['remindme'],
-                "callback_data" => "reminder-0-0"), array(
-                "text" => $lang['date'],
-                "callback_data" => "retrodate-0-0"));
-            sm($chatID, $text, $menu, 'HTML', false, false, false, true);
+                "callback_data" => "reminder-0-0"));
+            $menu[] = array(array(
+                "text" => $lang['showmore'],
+                "callback_data" => "showmore-0-0"));
+            sm($chatID, $text, $menu, false, false, false, false, true);
         } else {
             sm($chatID, $lang['nomemo']);
         }

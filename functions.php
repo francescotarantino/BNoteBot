@@ -14,9 +14,8 @@ function acq($id, $text, $alert = false){
 }
 
 //Send Message
-function sm($chatID, $text, $rmf = false, $pm = 'HTML', $dis = false, $replyto = false, $preview = false, $inline = false){
+function sm($chatID, $text, $rmf = false, $pm = false, $dis = false, $replyto = false, $preview = false, $inline = false){
   global $api;
-  global $userID;
   global $update;
 
   if($inline){
@@ -32,12 +31,12 @@ function sm($chatID, $text, $rmf = false, $pm = 'HTML', $dis = false, $replyto =
   $args = array(
     'chat_id' => $chatID,
     'text' => $text,
-    'disable_notification' => $dis/*,
-    'parse_mode' => $pm*/
+    'disable_notification' => $dis
   );
   if($replyto) $args['reply_to_message_id'] = $update["message"]["message_id"];
   if($rmf) $args['reply_markup'] = $rm;
   if($preview) $args['disable_web_page_preview'] = $preview;
+  if($pm) $args['parse_mode'] = $pm;
   if($text)
   {
     $r = new HttpRequest("post", "https://api.telegram.org/$api/sendmessage", $args);
@@ -50,8 +49,6 @@ function sm($chatID, $text, $rmf = false, $pm = 'HTML', $dis = false, $replyto =
 //Edit Message
 function em($chatID, $messageID, $text, $rmf = false, $inline = false, $pm = 'Markdown'){
   global $api;
-  global $userID;
-  global $update;
 
   if($inline){
     $rm = array('inline_keyboard' => $rmf);
@@ -75,4 +72,22 @@ function em($chatID, $messageID, $text, $rmf = false, $inline = false, $pm = 'Ma
     $rr = $r->getResponse();
   }
   return $rr;
+}
+
+//Edit Message keyboard
+function emk($chatID, $messageID, $rmf, $inline_msgid = false){
+  global $api;
+
+  $rm = array('inline_keyboard' => $rmf);
+  $rm = json_encode($rm);
+
+  $args["reply_markup"] = $rm;
+  if ($inline_msgid) {
+    $args["inline_message_id"] = $inline_msgid;
+  } else {
+    $args["chat_id"] = $chatID;
+    $args["message_id"] = $messageID;
+  }
+
+  new HttpRequest("post", "https://api.telegram.org/$api/editMessageReplyMarkup", $args);
 }
