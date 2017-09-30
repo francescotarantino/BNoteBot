@@ -1,75 +1,76 @@
 <?php
 $lang = array();
-$lang['welcome'] = "Benvenuto nel Bot!\xF0\x9F\x98\x8A
+$lang['welcome'] = "Benvenuto nel Bot!😊
 Con questo Bot puoi salvare delle note richiamabili attraverso la modalità inline! Puoi anche impostare dei promemoria!
-\xF0\x9F\x93\x9D - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!
-\xE2\x9C\x85 - Ricordati di seguirmi sul canale @franci22channel per tutte le comunicazioni.
-\xF0\x9F\x92\x9A - Se ti piace questo bot, scopri come supportarmi premendo il tasto Supportami \xF0\x9F\x92\x9A.";
-$lang['addmemo'] = "Aggiungi nota \xF0\x9F\x93\x9D";
-$lang['info'] = "Info \xE2\x84\xB9";
-$lang['vote'] = "Vota \xE2\xAD\x90";
-$lang['cancel'] = "Annulla \xE2\x9D\x8C";
-$lang['addmemotext'] = "Scrivi una nota\xF0\x9F\x93\x9D:";
-$lang['cancelled'] = "Annullato \xE2\x9D\x8C";
-$lang['saved'] = "Nota salvata! \xE2\x9C\x85";
-$lang['savedmemo'] = "Note salvate \xF0\x9F\x93\x96";
-$lang['next'] = "Avanti \xE2\x9E\xA1";
-$lang['back'] = "\xE2\xAC\x85 Indietro";
+📝 - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!
+✅ - Ricordati di seguirmi sul canale @franci22channel per tutte le comunicazioni.
+💚 - Se ti piace questo bot, scopri come supportarmi premendo il tasto Supportami 💚.";
+$lang['addmemo'] = "Aggiungi nota 📝";
+$lang['info'] = "Info ℹ";
+$lang['vote'] = "Vota ⭐";
+$lang['cancel'] = "Annulla ❌";
+$lang['addmemotext'] = "Scrivi una nota📝:";
+$lang['cancelled'] = "Annullato ❌";
+$lang['saved'] = "Nota salvata! ✅";
+$lang['savedmemo'] = "Note salvate 📖";
+$lang['next'] = "Avanti ➡";
+$lang['back'] = "⬅ Indietro";
 $lang['datememo'] = "Data: ";
-$lang['delete'] = "Elimina \xE2\x9D\x8C";
-$lang['no'] = "No \xE2\x9C\x96";
-$lang['deleted'] = "Eliminata! \xE2\x9C\x85";
-$lang['nomemo'] = "Nessuna nota trovata \xF0\x9F\x98\xAB";
-$lang['end'] = "Fine \xF0\x9F\x94\x9A";
-$lang['settings'] = "Impostazioni \xF0\x9F\x94\xA7";
-$lang['inlinemode'] = "Modalità inline \xF0\x9F\x92\xAC";
-$lang['deleteallnote'] = "Elimina tutte le note \xE2\x9D\x8C";
+$lang['delete'] = "Elimina ❌";
+$lang['no'] = "No ✖";
+$lang['deleted'] = "Eliminata! ✅";
+$lang['nomemo'] = "Nessuna nota trovata 😫";
+$lang['end'] = "Fine 🔚";
+$lang['settings'] = "Impostazioni 🔧";
+$lang['inlinemode'] = "Modalità inline 💬";
+$lang['deleteallnote'] = "Elimina tutte le note ❌";
 $lang['settingsinline'] = "Impostazioni";
-$lang['settingstextinline'] = "\xF0\x9F\x92\xAC - Modalità inline
-\xF0\x9F\x94\xA7 - Puoi modificare le impostazioni della modalità inline attraverso questi pulsanti:";
+$lang['settingstextinline'] = "💬 - Modalità inline
+🔧 - Puoi modificare le impostazioni della modalità inline attraverso questi pulsanti:";
 $lang['invertmemodata'] = "Inverti data e nota: ";
 $lang['enabled'] = "Abilitato";
 $lang['disabled'] = "Disabilitato";
-$lang['askdeleteallnote'] = "Eliminare tutte le note?\xE2\x9D\x8C";
+$lang['askdeleteallnote'] = "Eliminare tutte le note?❌";
 $lang['messagenovalid'] = "Messaggio non valido. Se hai problemi con il bot scrivi /start per riavviarlo.";
 $lang['infomsg'] = "Con questo Bot puoi salvare delle note richiamabili attraverso la modalità inline! Puoi anche impostare dei promemoria!
-\xF0\x9F\x93\x9D - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!
-\xE2\x9C\x85 - Ricordati di seguirmi sul canale @franci22channel per tutte le comunicazioni.";
+📝 - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!
+✅ - Ricordati di seguirmi sul canale @franci22channel per tutte le comunicazioni.";
 $lang['subchannel'] = "Iscriviti al canale";
 $lang['votemsg'] = "Se vuoi supportarmi, vota il mio Bot su @StoreBot.";
-$lang['feedback'] = "Feedback \xF0\x9F\x93\xAB";
-$lang['feedbacktext'] = "\xF0\x9F\x93\xAB - Se il Bot ha problemi o vuoi suggerirmi qualcosa, scrivimi in chat (@franci22) o inviami un messaggio adesso:";
-$lang['thanksfeedback'] = "Grazie per il feedback! \xE2\x9C\x85";
-$lang['remindme'] = "Promemoria \xF0\x9F\x95\x92";
-$lang['remindmetxt'] = "Quando ti devo ricordare questa nota? \xF0\x9F\x95\x92";
-$lang['remindmetut'] = "Come scrivere la data \xF0\x9F\x93\x85";
+$lang['feedback'] = "Feedback 📫";
+$lang['feedbacktext'] = "📫 - Se il Bot ha problemi o vuoi suggerirmi qualcosa, scrivimi in chat (@franci22) o inviami un messaggio adesso:";
+$lang['thanksfeedback'] = "Grazie per il feedback! ✅";
+$lang['remindme'] = "Promemoria 🕒";
+$lang['remindmetxt'] = "Quando ti devo ricordare questa nota? 🕒";
+$lang['remindmetut'] = "Come scrivere la data 📅";
 $lang['remindmeformat'] = "Devi scrivere la data in questo modo: GG.mm.AAAA hh:mm
-\xF0\x9F\x93\x85 - Esempio: 15.3.2017 12:15 (ovvero il 15 marzo 2017 alle 12 e 15), oggi (alle) 13:52, domani (alle) 21:03.";
+📅 - Esempio: 15.3.2017 12:15 (ovvero il 15 marzo 2017 alle 12 e 15), oggi (alle) 13:52, domani (alle) 21:03.";
 $lang['onlytxt'] = "Il Bot supporta solo testo per adesso.";
-$lang['remindersaved'] = "Promemoria salvato! \xE2\x9C\x85";
-$lang['date'] = "Data\xF0\x9F\x93\x85";
+$lang['remindersaved'] = "Promemoria salvato! ✅";
+$lang['date'] = "Data📅";
 $lang['invaliddate'] = "Data non valida";
-$lang['retrodatetxt'] = "Scrivimi la nuova data della nota \xF0\x9F\x95\x92";
-$lang['datesaved'] = "Data salvata! \xE2\x9C\x85";
-$lang['settimezone'] = "Imposta timezone \xF0\x9F\x95\x92";
-$lang['settimezonetxt'] = "Inviami il timezone \xF0\x9F\x95\x92
+$lang['retrodatetxt'] = "Scrivimi la nuova data della nota 🕒";
+$lang['datesaved'] = "Data salvata! ✅";
+$lang['settimezone'] = "Imposta timezone 🕒";
+$lang['settimezonetxt'] = "Inviami il timezone 🕒
 Lista timezone: http://php.net/manual/it/timezones.php";
-$lang['savedt'] = "Timezone salvato! \xE2\x9C\x85";
-$lang['invalidtimezone'] = "Timezone non valido \xE2\x9C\x96";
+$lang['savedt'] = "Timezone salvato! ✅";
+$lang['invalidtimezone'] = "Timezone non valido ✖";
 $lang['currenttimezone'] = "Timezone corrente: ";
-$lang['defaulttimezone'] = "Timezone di default \xF0\x9F\x8C\x8D";
-$lang['edit'] = "Modifica \xF0\x9F\x93\x9D";
-$lang['edittxt'] = "Inviami il nuovo testo della nota \xF0\x9F\x93\x9D";
-$lang['reminders'] = "Promemoria: \xF0\x9F\x95\x92";
-$lang['uhareminders'] = "Hai già dei promemoria per questa nota: \xF0\x9F\x95\x92";
-$lang['supportme'] = "Supportami \xF0\x9F\x92\x9A";
-$lang['supportmetext'] = "I miei Bot sono gratuiti e privi di pubblicità, puoi supportarmi facendo una piccola donazione via PayPal o BitCoin, iscrivendoti al mio canale (@franci22channel) e votando il Bot su @StoreBot. Grazie \xF0\x9F\x92\x9A";
-$lang['github'] = "GitHub \xF0\x9F\x93\x82";
+$lang['defaulttimezone'] = "Timezone di default 🌍";
+$lang['edit'] = "Modifica 📝";
+$lang['edittxt'] = "Inviami il nuovo testo della nota 📝";
+$lang['reminders'] = "Promemoria: 🕒";
+$lang['uhareminders'] = "Hai già dei promemoria per questa nota: 🕒";
+$lang['supportme'] = "Supportami 💚";
+$lang['supportmetext'] = "I miei Bot sono gratuiti e privi di pubblicità, puoi supportarmi facendo una piccola donazione via PayPal o BitCoin, iscrivendoti al mio canale (@franci22channel) e votando il Bot su @StoreBot. Grazie 💚";
+$lang['github'] = "GitHub 📂";
 $lang['opensource'] = "Questo Bot è open source sotto licenza GPL 3.0, puoi trovarne il codice completo su GitHub.";
-$lang['reminderman'] = "Gestione promemoria \xF0\x9F\x95\x92";
-$lang['add'] = "Aggiungi \xE2\x9E\x95";
-$lang['deletereminder'] = "Scegli quale promemoria eliminare \xE2\x9D\x8C:";
-$lang['deletedreminder'] = "Promemoria eliminato! \xE2\x9D\x8C";
-$lang['noreminder'] = "Non hai nessun promemoria! \xF0\x9F\x95\x92";
-$lang['deleteall'] = "Elimina tutti \xE2\x9D\x8C";
+$lang['reminderman'] = "Gestione promemoria 🕒";
+$lang['add'] = "Aggiungi ➕";
+$lang['deletereminder'] = "Scegli quale promemoria eliminare ❌:";
+$lang['deletedreminder'] = "Promemoria eliminato! ❌";
+$lang['noreminder'] = "Non hai nessun promemoria! 🕒";
+$lang['deleteall'] = "Elimina tutti ❌";
+$lang['showmore'] = "Mostra di più 🔻";
 ?>
