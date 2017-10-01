@@ -40,4 +40,5 @@ $lang['feedback'] = "Feedback 📫";
 $lang['feedbacktext'] = "📫 - Se esse bot contém problemas ou se você deseja sugerir algo, mande-me uma mensagem por chat (@franci22) ou envie uma mensagem agora:";
 $lang['thanksfeedback'] = "Obrigado pelo seu feedback! ✅";
 $lang['onlytxt'] = "O bot suporta apenas texto por enquanto.";
+$lang['remindertext'] = "Reminder🕒\nSão las ";
 ?>

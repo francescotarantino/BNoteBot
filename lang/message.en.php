@@ -73,6 +73,7 @@ $lang['deletereminder'] = "Choose which reminder to delete ❌:";
 $lang['deletedreminder'] = "Deleted reminder! ❌";
 $lang['noreminder'] = "You don't have any reminder! 🕒";
 $lang['deleteall'] = "Delete everything ❌";
+$lang['remindertext'] = "Reminder🕒\nIt's ";
 //Missing in message.pt.php and message.ru.php
 $lang['showmore'] = "Show more 🔻";
 ?>
