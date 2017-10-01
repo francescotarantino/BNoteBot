@@ -231,7 +231,7 @@ if($update["inline_query"]["id"]){
             "text" => $lang['delete'],
             "callback_data" => "confdelete-0-" . $data[2] . "-" .  $set[$data[2]]['id']), array(
             "text" => $lang['no'],
-            "callback_data" => "next-0-" . ($data[2]-1)));
+            "callback_data" => "back-0-" . ($data[2]+1)));
     } else if($data[0] == "confdelete"){
         $dbuser->query("DELETE FROM BNoteBot_memo WHERE id = '" . $data[3] . "'");
         $dbuser->query("UPDATE BNoteBot_user SET notes='" . ($notes - 1) . "' WHERE userID='$userID'");
@@ -252,8 +252,7 @@ if($update["inline_query"]["id"]){
     } else if($data[0] == "confdeleteallno"){
         $text = $lang['cancelled'];
     } else if ($data[0] == "reminder") {
-      $text = $set[$data[2]]['memo'];
-      $menur[] = array(array(
+      $menu[] = array(array(
         "text" => $lang['add'],
         "callback_data" => "remindme-0-" . $data[2]
       ));
@@ -266,19 +265,19 @@ if($update["inline_query"]["id"]){
                   $counter++;
               }
               $reminders = $lang['uhareminders'] . "\n" . $reminders . "\n";
-              $menur[] = array(array(
+              $menu[] = array(array(
                 "text" => $lang['delete'],
                 "callback_data" => "deletereminder-0-" . $set[$data[2]]['id'] . "-" . $data[2]
               ));
           }
       }
-      if ($data[3] == "em") {
-        em($userID, $msgid, $lang['reminderman'] . "\n\n" . $reminders, $menur, true);
-      } else {
-        sm($userID, $lang['reminderman'] . "\n\n" . $reminders, $menur, false, false, false, false, true);
-      }
+      $menu[] = array(array(
+        "text" => $lang['back'],
+        "callback_data" => "back-0-" . ($data[2]+1)
+      ));
+      $text = $set[$data[2]]['memo'] . "\n\n" . $lang['reminderman'] . "\n\n" . $reminders;
     } else if($data[0] == "remindme"){
-        $text = $lang['reminderman'];
+        $text = $set[$data[2]]['memo'];
         $dbuser->query("UPDATE BNoteBot_user SET status='addremind-" . $data[2] . "' WHERE userID='$userID'");
         $menur[] = array($lang['remindmetut']);
         $menur[] = array($lang['cancel']);
@@ -304,14 +303,14 @@ if($update["inline_query"]["id"]){
       ));
       $menur[] = array(array(
         "text" => $lang['back'],
-        "callback_data" => "reminder-0-" . $data[3] . "-em"
+        "callback_data" => "reminder-0-" . $data[3]
       ));
       em($userID, $msgid, $lang['deletereminder'] . "\n\n" . $reminders, $menur, true);
     } elseif ($data[0] == "deleteallreminders") {
       $dbuser->query("DELETE FROM BNoteBot_reminder WHERE memoid = " . $data[2]);
       $menur[] = array(array(
         "text" => $lang['back'],
-        "callback_data" => "reminder-0-" . $data[2] . "-em"
+        "callback_data" => "reminder-0-" . $data[2]
       ));
       em($userID, $msgid, $lang['noreminder'], $menur, true);
     } elseif ($data[0] == "deletenreminder") {
@@ -332,13 +331,13 @@ if($update["inline_query"]["id"]){
           }
           $menur[] = array(array(
             "text" => $lang['back'],
-            "callback_data" => "reminder-0-" . $data[3] . "-em"
+            "callback_data" => "reminder-0-" . $data[3]
           ));
           em($userID, $msgid, $lang['deletereminder'] . "\n\n" . $reminders, $menur, true);
         } else {
           $menur[] = array(array(
             "text" => $lang['back'],
-            "callback_data" => "reminder-0-" . $data[3] . "-em"
+            "callback_data" => "reminder-0-" . $data[3]
           ));
           em($userID, $msgid, $lang['noreminder'], $menur, true);
         }
