@@ -2,7 +2,7 @@
 //$lang = array();
 $lang['welcome'] = "Bem-vindo ao bot! 😊
 Com esse bot você pode salvar notas e usá-las através do modo integrado!
-📝- - Salve uma nota e, no campo do chat, escreva @BNoteBot (ou selecione-o através da lista). Uma lista com todas as suas notas salvas no bot estarão prontas para serem enviadas!
+📝- Salve uma nota e, no campo do chat, escreva @BNoteBot (ou selecione-o através da lista). Uma lista com todas as suas notas salvas no bot estarão prontas para serem enviadas!
 🇧🇷 - Obrigado ao @edgararaujo por traduzir o bot em português.";
 $lang['addmemo'] = "Adicionar nota 📝";
 $lang['info'] = "Info ℹ";
@@ -32,7 +32,7 @@ $lang['disabled'] = "Desabilitado";
 $lang['askdeleteallnote'] = "Apagar todas as notas?❌";
 $lang['messagenovalid'] = "Mensagem inválida. Se você possui problemas com o bot digite /start para reiniciar.";
 $lang['infomsg'] = "Com esse bot você pode salvar notas e usá-las através do modo integrado!
-📝- Salve uma nota e, no campo do chat, escreva @BNoteBot (ou selecione-o através da lista). Uma lista com todas as suas notas salvas no bot estarão prontas para serem enviadas!
+📝 - Salve uma nota e, no campo do chat, escreva @BNoteBot (ou selecione-o através da lista). Uma lista com todas as suas notas salvas no bot estarão prontas para serem enviadas!
 ✅ - Lembre-se de me seguir no @franci22channel para receber todas as novidades (somente 🇮🇹).";
 $lang['subchannel'] = "Entrar no canal";
 $lang['votemsg'] = "Se você deseja me ajudar, vote no meu bot na @StoreBot.";

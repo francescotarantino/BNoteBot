@@ -96,7 +96,7 @@ if($update["inline_query"]["id"]){
                     $json[] = array(
                         'type' => 'article',
                         'id' => $row["id"],
-                        'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " \xF0\x9F\x93\x85",
+                        'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
                         'description' => $row["memo"],
                         'message_text' => $row["memo"],
                         'parse_mode' => 'HTML'
@@ -105,7 +105,7 @@ if($update["inline_query"]["id"]){
                     $json[] = array(
                         'type' => 'article',
                         'id' => $row["id"],
-                        'description' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " \xF0\x9F\x93\x85",
+                        'description' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
                         'title' => $row["memo"],
                         'message_text' => $row["memo"],
                         'parse_mode' => 'HTML'
@@ -116,7 +116,7 @@ if($update["inline_query"]["id"]){
                     $json[] = array(
                         'type' => 'article',
                         'id' => $row["id"],
-                        'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " \xF0\x9F\x93\x85",
+                        'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
                         'description' => $row["memo"],
                         'message_text' => $row["memo"],
                         'parse_mode' => 'HTML'
@@ -125,7 +125,7 @@ if($update["inline_query"]["id"]){
                     $json[] = array(
                         'type' => 'article',
                         'id' => $row["id"],
-                        'description' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " \xF0\x9F\x93\x85",
+                        'description' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
                         'title' => $row["memo"],
                         'message_text' => $row["memo"],
                         'parse_mode' => 'HTML'
@@ -177,7 +177,7 @@ if($update["inline_query"]["id"]){
                 "text" => $lang['back'],
                 "callback_data" => "back-0-" . $i));
         } else {
-            $text = $set[$i]['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "\xF0\x9F\x93\x85" . $reminders;
+            $text = $set[$i]['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "📅" . $reminders;
             $menu[] = array(array(
                 "text" => $lang['back'],
                 "callback_data" => "back-0-" . $i), array(
@@ -205,7 +205,7 @@ if($update["inline_query"]["id"]){
                 $reminders = "\n\n" . $lang['reminders'] . "\n" . $reminders;
             }
         }
-        $text = $set[$i]['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "\xF0\x9F\x93\x85" . $reminders;
+        $text = $set[$i]['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "📅" . $reminders;
         if($i == 0){
             $menu[] = array(array(
                 "text" => $lang['next'],
@@ -384,22 +384,22 @@ if($update["inline_query"]["id"]){
 $sexploded = explode("-", $status);
 
 if($status == "select"){
-    if($msg == "English \xF0\x9F\x87\xAC\xF0\x9F\x87\xA7"){
+    if($msg == "English 🇬🇧"){
         include($langdir . 'message.en.php');
         menu($lang['welcome']);
         $dbuser->query("UPDATE BNoteBot_user SET lang='en' WHERE userID='$userID'");
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
-    } else if($msg == "Italiano \xF0\x9F\x87\xAE\xF0\x9F\x87\xB9"){
+    } else if($msg == "Italiano 🇮🇹"){
         include($langdir . 'message.it.php');
         menu($lang['welcome']);
         $dbuser->query("UPDATE BNoteBot_user SET lang='it' WHERE userID='$userID'");
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
-    } else if($msg == "Português \xF0\x9F\x87\xA7\xF0\x9F\x87\xB7"){
+    } else if($msg == "Português 🇧🇷"){
         include($langdir . 'message.pt.php');
         menu($lang['welcome']);
         $dbuser->query("UPDATE BNoteBot_user SET lang='pt' WHERE userID='$userID'");
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
-    } else if($msg == "Russian \xF0\x9F\x87\xB7\xF0\x9F\x87\xBA"){
+    } else if($msg == "Russian 🇷🇺"){
         include($langdir . 'message.ru.php');
         menu($lang['welcome']);
         $dbuser->query("UPDATE BNoteBot_user SET lang='ru' WHERE userID='$userID'");
@@ -525,7 +525,7 @@ if($status == "select"){
                     $reminders = "\n\n" . $lang['reminders'] . "\n" . $reminders;
                 }
             }
-            $text = $set['0']['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set['0']['timestamp']) . "\xF0\x9F\x93\x85" . $reminders;
+            $text = $set['0']['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set['0']['timestamp']) . "📅" . $reminders;
             $menu[] = array(array(
                 "text" => $lang['next'],
                 "callback_data" => "next-0-0"));
@@ -555,9 +555,9 @@ if($status == "select"){
         $menu[] = array(array(
             "text" => $lang['vote'],
             "url" => "https://telegram.me/storebot?start=bnotebot"), array(
-            "text" => "PayPal \xF0\x9F\x92\xB3",
+            "text" => "PayPal 💳",
             "url" => "https://paypal.me/franci22"), array(
-            "text" => "Bitcoin \xF0\x9F\x92\xB0",
+            "text" => "Bitcoin 💰",
             "url" => "https://paste.ubuntu.com/24299810/"
             ));
         sm($chatID, $lang['supportmetext'], $menu, 'HTML', false, false, false, true);
@@ -596,14 +596,14 @@ if($status == "select"){
 }
 
 function langmenu($chatID){
-    $text = "\xF0\x9F\x87\xAC\xF0\x9F\x87\xA7 - Welcome! Select a language:
-\xF0\x9F\x87\xAE\xF0\x9F\x87\xB9 - Benvenuto! Seleziona una lingua:
-\xF0\x9F\x87\xA7\xF0\x9F\x87\xB7 - Bem-vindo! Escolha um idioma:
-\xF0\x9F\x87\xB7\xF0\x9F\x87\xBA - Добро пожаловать! Выберите язык:";
-    $menu[] = array("English \xF0\x9F\x87\xAC\xF0\x9F\x87\xA7");
-    $menu[] = array("Italiano \xF0\x9F\x87\xAE\xF0\x9F\x87\xB9");
-    $menu[] = array("Português \xF0\x9F\x87\xA7\xF0\x9F\x87\xB7");
-    $menu[] = array("Russian \xF0\x9F\x87\xB7\xF0\x9F\x87\xBA");
+    $text = "🇬🇧 - Welcome! Select a language:
+🇮🇹 - Benvenuto! Seleziona una lingua:
+🇧🇷 - Bem-vindo! Escolha um idioma:
+🇷🇺 - Добро пожаловать! Выберите язык:";
+    $menu[] = array("English 🇬🇧");
+    $menu[] = array("Italiano 🇮🇹");
+    $menu[] = array("Português 🇧🇷");
+    $menu[] = array("Russian 🇷🇺");
     sm($chatID, $text, $menu, 'HTML', false, false, true);
 }
 
