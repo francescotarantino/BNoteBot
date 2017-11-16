@@ -11,4 +11,5 @@ $dbuser = new mysqli($hostdb, $userdb, $passworddb, $databasedb);
 
 //Other.
 $langdir = "lang/";
+$owner = 123456; //Replace with your Telegram ID (@userinfobot). The feedbacks will be sent to this user.
 ?>

@@ -155,6 +155,9 @@ if($update["inline_query"]["id"]){
         acq($update["callback_query"]["id"], $textalert, $alert);
         em($userID, $update["callback_query"]["message"]["message_id"], $update["callback_query"]["message"]["text"]);
         exit();
+    } elseif ($data[0] == "reply" AND $status == NULL AND $userID == $owner) {
+        $dbuser->query("UPDATE BNoteBot_user SET status='reply-" . $data[1] . "' WHERE userID='$userID'");
+        sm($userID, "*Send the response message:*", false, "Markdown");
     }
     $result = $dbuser->query("SELECT * FROM BNoteBot_memo WHERE userID = '" . $userID . "' ORDER BY timestamp DESC") or die("0");
     for ($set = array(); $row = $result->fetch_assoc(); $set[] = $row);
@@ -443,8 +446,11 @@ if($status == "select"){
     if($msg == $lang['cancel']){
         menu($lang['cancelled']);
     } else {
-        $feedback = "Messaggio: $msg\nNome: $name\nUsername: @$username\nUserID: $userID\nLingua: ".$language."\nData: " . date($dateformat, time());
-        sm("31507896", $feedback);
+        $menu[] = array(array(
+            "text" => "Reply",
+            "callback_data" => "reply-" . $userID));
+        $feedback = "New feedback received!\n\nMessage: $msg\nName: $name\nUsername: @$username\nUserID: $userID\nLanguage: ".$language."\nDate: " . date($dateformat, time());
+        sm($owner, $feedback, $menu, false, false, false, false, true);
         $var=fopen("feedback.txt","a+");
         fwrite($var, "\n\n" . $feedback);
         fclose($var);
@@ -499,6 +505,10 @@ if($status == "select"){
         menu($lang['saved']);
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
     }
+} else if($sexploded[0] == "reply" AND $userID == $owner){
+    $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
+    sm($userID, "*Sent.*", false, "Markdown");
+    sm($sexploded[1], $msg);
 } else {
     if($msg == $lang['addmemo']){
         $dbuser->query("UPDATE BNoteBot_user SET status='addmemo' WHERE userID='$userID'");
