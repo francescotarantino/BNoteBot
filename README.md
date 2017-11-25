@@ -1,9 +1,7 @@
-# BNoteBot
+# BNoteBot [![Bot](https://img.shields.io/badge/Telegram-%40BNoteBot-blue.svg)](https://telegram.me/BNoteBot)  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://www.gnu.org/licenses/gpl-3.0)
 Telegram Bot for save notes callable through inline mode and set reminders!
 
 ![Logo BNoteBot](https://raw.githubusercontent.com/franci22/BNoteBot/master/Logo.png)
-
-Telegram Username: [@BNoteBot](https://telegram.me/BNoteBot)
 
 ## How to contribute
 Fork this project, create a new branch, commit all changes and create a pull request!
