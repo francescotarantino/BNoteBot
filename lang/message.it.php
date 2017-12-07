@@ -74,4 +74,7 @@ $lang['noreminder'] = "Non hai nessun promemoria! 🕒";
 $lang['deleteall'] = "Elimina tutti ❌";
 $lang['showmore'] = "Altro 🔻";
 $lang['remindertext'] = "Promemoria🕒\nSono le ";
+$lang['justwritemode'] = "Modalità 'basta scrivere' ✍️";
+$lang['justwritemodesettings'] = "Modalità 'basta scrivere'✍️
+Tramite questa modalità non è più necessario toccare il pulsante " . $lang["addmemo"] . ", basta scrivere un messaggio e questo verrà direttamente salvato nelle tue note!";
 ?>

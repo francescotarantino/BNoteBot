@@ -33,6 +33,7 @@ if($numrows == 0 && $update["inline_query"]["id"] == false){
     $status = $row['status'];
     $language = $lang = $row['lang'];
     $invertmemodata = $row['invertmemodata'];
+    $justwritemode = $row['justwritemode'];
     $timezone = $row['timezone'];
 }
 
@@ -244,6 +245,13 @@ if($update["inline_query"]["id"]){
                 "text" => $lang['invertmemodata'] . $textalert,
                 "callback_data" => "toggle-0-invertmemodata"));
             $text = $lang['settingstextinline'];
+        } else if ($data[2] == "justwritemode") {
+            if($justwritemode == 0){ $toset = 1; $textalert = $lang['enabled']; } else { $toset = 0; $textalert = $lang['disabled']; }
+            $dbuser->query("UPDATE BNoteBot_user SET justwritemode = '" . $toset . "' WHERE userID = '" . $userID . "'");
+            $menu[] = array(array(
+                "text" => $textalert,
+                "callback_data" => "toggle-0-justwritemode"));
+            $text = $lang['justwritemodesettings'];
         }
     } else if($data[0] == "confdeleteall"){
         $dbuser->query("DELETE FROM BNoteBot_memo WHERE userID = '" . $userID ."'");
@@ -581,6 +589,12 @@ if($status == "select"){
         $menu[] = array($lang['defaulttimezone']);
         $menu[] = array($lang['cancel']);
         sm($chatID, $lang['settimezonetxt'] . "\n\n" . $lang['currenttimezone'] . $timezone, $menu);
+    } else if($msg == $lang['justwritemode']){
+        if($justwritemode){ $justwritemodetxt = $lang['enabled']; } else { $justwritemodetxt = $lang['disabled']; }
+        $menu[] = array(array(
+            "text" => $justwritemodetxt,
+            "callback_data" => "toggle-0-justwritemode"));
+        sm($chatID, $lang['justwritemodesettings'], $menu, 'HTML', false, false, false, true);
     } else if($msg == $lang['cancel']){
         menu($lang['cancelled']);
     } else {
@@ -594,7 +608,15 @@ if($status == "select"){
                 break;
             default:
                 if ($update["message"]["text"]) {
-                  sm($chatID, $lang['messagenovalid']);
+                  if ($justwritemode) {
+                    $dbuser->query("INSERT INTO BNoteBot_memo (userID, memo, timestamp) VALUES ('$userID', '" . $dbuser->real_escape_string($msg) . "', '" . time() . "')");
+                    $menu[] = array(array(
+                        "text" => $lang['delete'],
+                        "callback_data" => "confdelete-0-0-" .$dbuser->insert_id));
+                    sm($chatID, $lang['saved'] . "\n\n" . $msg, $menu, 'HTML', false, false, false, true);
+                  } else {
+                    sm($chatID, $lang['messagenovalid']);
+                  }
                 }
                 break;
         }
@@ -628,6 +650,7 @@ function setmenu($text){
     global $lang;
     global $chatID;
     $menu[] = array($lang['inlinemode']);
+    $menu[] = array($lang['justwritemode']);
     $menu[] = array($lang['deleteallnote']);
     $menu[] = array($lang['settimezone']);
     $menu[] = array($lang['cancel']);

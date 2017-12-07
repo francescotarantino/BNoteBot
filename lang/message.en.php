@@ -76,4 +76,7 @@ $lang['deleteall'] = "Delete everything ❌";
 $lang['remindertext'] = "Reminder🕒\nIt's ";
 //Missing in message.pt.php and message.ru.php
 $lang['showmore'] = "Show more 🔻";
+$lang['justwritemode'] = "Just write mode ✍️";
+$lang['justwritemodesettings'] = "Just write mode ✍️
+Through this mode it's not necessary to use " . $lang["addmemo"] . " button, all you have to do is to write a message and this will be saved into your notes!";
 ?>
