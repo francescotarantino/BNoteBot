@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `BNoteBot_memo` (
   `type` text,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `memo` (`memo`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4146 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
 CREATE TABLE IF NOT EXISTS `BNoteBot_reminder` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `BNoteBot_reminder` (
   `memoid` int(11) NOT NULL,
   `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=524 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
 CREATE TABLE IF NOT EXISTS `BNoteBot_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS `BNoteBot_user` (
   `name` text,
   `status` text,
   `lang` text,
-  `notes` text,
   `invertmemodata` int(1) NOT NULL DEFAULT '0',
+  `justwritemode` tinyint(1) NOT NULL DEFAULT '1',
   `timezone` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2170 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
