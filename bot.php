@@ -32,7 +32,6 @@ if($numrows == 0 && $update["inline_query"]["id"] == false){
     $row = $result->fetch_array(MYSQLI_ASSOC);
     $status = $row['status'];
     $language = $lang = $row['lang'];
-    $notes = $row['notes'];
     $invertmemodata = $row['invertmemodata'];
     $timezone = $row['timezone'];
 }
@@ -150,7 +149,6 @@ if($update["inline_query"]["id"]){
     $data = explode("-", $update["callback_query"]["data"]);
     if($data[0] == "deleterem"){
         $dbuser->query("DELETE FROM BNoteBot_memo WHERE id = '" . $data[1] . "'");
-        $dbuser->query("UPDATE BNoteBot_user SET notes='" . ($notes - 1) . "' WHERE userID='$userID'");
         sm($userID, $lang["deleted"]);
         acq($update["callback_query"]["id"], $textalert, $alert);
         em($userID, $update["callback_query"]["message"]["message_id"], $update["callback_query"]["message"]["text"]);
@@ -237,7 +235,6 @@ if($update["inline_query"]["id"]){
             "callback_data" => "back-0-" . ($data[2]+1)));
     } else if($data[0] == "confdelete"){
         $dbuser->query("DELETE FROM BNoteBot_memo WHERE id = '" . $data[3] . "'");
-        $dbuser->query("UPDATE BNoteBot_user SET notes='" . ($notes - 1) . "' WHERE userID='$userID'");
         $text = $lang['deleted'];
     } else if($data[0] == "toggle"){
         if($data[2] == "invertmemodata"){
@@ -419,7 +416,6 @@ if($status == "select"){
             menu($lang['onlytxt']);
         } else {
             $dbuser->query("INSERT INTO BNoteBot_memo (userID, memo, timestamp) VALUES ('$userID', '" . $dbuser->real_escape_string($msg) . "', '" . time() . "')");
-            $dbuser->query("UPDATE BNoteBot_user SET notes='" . ++$notes . "' WHERE userID='$userID'");
             menu($lang['saved']);
         }
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
