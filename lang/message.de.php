@@ -4,7 +4,8 @@ $lang['welcome'] = "Willkommen! 😊
 Mit diesem Bot kannst du Notizen im Inline-Modus speichern und sogar Erinnerungen einstellen!
 📝 - Speichere eine Notiz und tippe @BNoteBot und dann ein Leerzeichen in irgendeinem Chat. Eine Liste aller gespeicherten Notizen werden im Bot gespeichert und sind dann bereit gesendet zu werden.
 🌍 - Vergiss nicht, in den Settings deine Zeitzone einzustellen!
-💚 - Falls dir dieser Bot gefällt, kannst du den Unterstützen 💚 Button drücken.";
+💚 - Falls dir dieser Bot gefällt, kannst du den Unterstützen 💚 Button drücken.
+🇩🇪 - Danke an @JosXa für die Übersetzung.";
 $lang['addmemo'] = "Memo hinzufügen 📝";
 $lang['info'] = "Info ℹ";
 $lang['vote'] = "Abstimmen ⭐";
