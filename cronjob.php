@@ -22,6 +22,12 @@ while($row = $result->fetch_assoc()) {
     date_default_timezone_set($timezone);
     include($langdir . "message.en.php");
     break;
+    case 'de':
+    if($timezone == FALSE) $timezone = "Europe/Berlin";
+    date_default_timezone_set($timezone);
+    include($langdir . "message.en.php");
+    include($langdir . "message.de.php");
+    break;
     case 'pt':
     if($timezone == FALSE) $timezone = "America/Brasilia";
     date_default_timezone_set($timezone);

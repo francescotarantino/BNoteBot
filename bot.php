@@ -56,6 +56,16 @@ switch ($lang) {
         }
         date_default_timezone_set($timezone);
         break;
+    case 'de':
+        include($langdir . 'message.en.php');
+        include($langdir . 'message.de.php');
+        $dateformat = "d-m-Y H:i:s";
+        $dateformatnosec = "d-m-Y H:i";
+        if($timezone == FALSE){
+            $timezone = "Europe/Berlin";
+        }
+        date_default_timezone_set($timezone);
+        break;
     case 'pt':
         include($langdir . 'message.en.php');
         include($langdir . 'message.pt.php');
@@ -402,6 +412,11 @@ if($status == "select"){
         menu($lang['welcome']);
         $dbuser->query("UPDATE BNoteBot_user SET lang='it' WHERE userID='$userID'");
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
+    } else if($msg == "Deutsch 🇩🇪"){
+        include($langdir . 'message.de.php');
+        menu($lang['welcome']);
+        $dbuser->query("UPDATE BNoteBot_user SET lang='de' WHERE userID='$userID'");
+        $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
     } else if($msg == "Português 🇧🇷"){
         include($langdir . 'message.pt.php');
         menu($lang['welcome']);
@@ -626,10 +641,12 @@ if($status == "select"){
 function langmenu($chatID){
     $text = "🇬🇧 - Welcome! Select a language:
 🇮🇹 - Benvenuto! Seleziona una lingua:
+🇩🇪 - Herzlich willkommen! Wähle eine Sprache:
 🇧🇷 - Bem-vindo! Escolha um idioma:
 🇷🇺 - Добро пожаловать! Выберите язык:";
     $menu[] = array("English 🇬🇧");
     $menu[] = array("Italiano 🇮🇹");
+    $menu[] = array("Deutsch 🇩🇪");
     $menu[] = array("Português 🇧🇷");
     $menu[] = array("Russian 🇷🇺");
     sm($chatID, $text, $menu, 'HTML', false, false, true);
