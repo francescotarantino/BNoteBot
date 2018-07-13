@@ -28,3 +28,10 @@ CREATE TABLE IF NOT EXISTS `BNoteBot_user` (
   `timezone` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+
+CREATE TABLE IF NOT EXISTS `BNoteBot_sentinline` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `memo_id` int(11) NOT NULL,
+  `msg_id` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;

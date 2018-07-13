@@ -88,7 +88,17 @@ switch ($lang) {
         break;
 }
 
-if($update["inline_query"]["id"]){
+if ($update["chosen_inline_result"]) {
+    $result = $dbuser->query("SELECT * FROM BNoteBot_memo WHERE id = " . $update["chosen_inline_result"]["result_id"]);
+    $row = $result->fetch_assoc();
+    $args = array(
+        'inline_message_id' => $update["chosen_inline_result"]["inline_message_id"],
+        'text' => $row["memo"],
+        'parse_mode' => 'HTML'
+    );
+    new HttpRequest("post", "https://api.telegram.org/$api/editmessagetext", $args);
+    $dbuser->query("INSERT INTO BNoteBot_sentinline (memo_id, msg_id) VALUES (". $update["chosen_inline_result"]["result_id"] .", '". $update["chosen_inline_result"]["inline_message_id"] ."')");
+} elseif($update["inline_query"]){
     $result = $dbuser->query("SELECT * FROM BNoteBot_memo WHERE userID = '" . $userID . "' ORDER BY timestamp DESC");
     if($result->num_rows == 0){
         $json[] = array(
@@ -100,6 +110,7 @@ if($update["inline_query"]["id"]){
             'parse_mode' => 'HTML'
         );
     } else {
+        $rm = array('inline_keyboard' => array(array(array("text" => "Auto-Update ON", "callback_data" => "nothing"))));
         while($row = $result->fetch_assoc()) {
             if($msg == true && strpos($row["memo"], $msg) !== false){
                 if($invertmemodata == 1){
@@ -109,7 +120,8 @@ if($update["inline_query"]["id"]){
                         'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
                         'description' => $row["memo"],
                         'message_text' => $row["memo"],
-                        'parse_mode' => 'HTML'
+                        'parse_mode' => 'HTML',
+                        'reply_markup' => $rm
                     );
                 } else {
                     $json[] = array(
@@ -118,7 +130,8 @@ if($update["inline_query"]["id"]){
                         'description' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
                         'title' => $row["memo"],
                         'message_text' => $row["memo"],
-                        'parse_mode' => 'HTML'
+                        'parse_mode' => 'HTML',
+                        'reply_markup' => $rm
                     );
                 }
             } else if($msg == false){
@@ -129,7 +142,8 @@ if($update["inline_query"]["id"]){
                         'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
                         'description' => $row["memo"],
                         'message_text' => $row["memo"],
-                        'parse_mode' => 'HTML'
+                        'parse_mode' => 'HTML',
+                        'reply_markup' => $rm
                     );
                 } else {
                     $json[] = array(
@@ -138,7 +152,8 @@ if($update["inline_query"]["id"]){
                         'description' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
                         'title' => $row["memo"],
                         'message_text' => $row["memo"],
-                        'parse_mode' => 'HTML'
+                        'parse_mode' => 'HTML',
+                        'reply_markup' => $rm
                     );
                 }
             }
@@ -153,7 +168,7 @@ if($update["inline_query"]["id"]){
         'switch_pm_text' => $lang['settingsinline'],
         'switch_pm_parameter' => "settingsinline"
     );
-    $r = new HttpRequest("post", "https://api.telegram.org/$api/answerInlineQuery", $args);
+    new HttpRequest("post", "https://api.telegram.org/$api/answerInlineQuery", $args);
 } else if($update["callback_query"]["data"]){
     $textalert = "";
     $alert = false;
@@ -523,6 +538,17 @@ if($status == "select"){
         //$dbuser->query("INSERT INTO BNoteBot_reminder (userID, memoid, timestamp) VALUES ('$userID', '".$set[$sexploded[1]]['id']."', '$timemsg')");
         menu($lang['saved']);
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
+        $result = $dbuser->query("SELECT * FROM BNoteBot_sentinline WHERE memo_id = " . $set[$sexploded[1]]['id']);
+        while($row = $result->fetch_assoc()){
+            $args = array(
+                'inline_message_id' => $row["msg_id"],
+                'text' => $msg,
+                'parse_mode' => 'HTML'
+            );
+            $r = new HttpRequest("post", "https://api.telegram.org/$api/editmessagetext", $args);
+            $r = json_decode($r->getResponse(), true);
+            if (!$r["ok"]) $dbuser->query("DELETE FROM BNoteBot_sentinline WHERE id = " . $row["id"]);
+        }
     }
 } else if($sexploded[0] == "reply" AND $userID == $owner){
     $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
