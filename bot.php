@@ -112,50 +112,29 @@ if ($update["chosen_inline_result"]) {
     } else {
         $rm = array('inline_keyboard' => array(array(array("text" => "Auto-Update ON", "callback_data" => "nothing"))));
         while($row = $result->fetch_assoc()) {
-            if($msg == true && strpos($row["memo"], $msg) !== false){
-                if($invertmemodata == 1){
-                    $json[] = array(
-                        'type' => 'article',
-                        'id' => $row["id"],
-                        'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
-                        'description' => $row["memo"],
-                        'message_text' => $row["memo"],
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $rm
-                    );
-                } else {
-                    $json[] = array(
-                        'type' => 'article',
-                        'id' => $row["id"],
-                        'description' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
-                        'title' => $row["memo"],
-                        'message_text' => $row["memo"],
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $rm
-                    );
-                }
-            } else if($msg == false){
-                if($invertmemodata == 1){
-                    $json[] = array(
-                        'type' => 'article',
-                        'id' => $row["id"],
-                        'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
-                        'description' => $row["memo"],
-                        'message_text' => $row["memo"],
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $rm
-                    );
-                } else {
-                    $json[] = array(
-                        'type' => 'article',
-                        'id' => $row["id"],
-                        'description' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
-                        'title' => $row["memo"],
-                        'message_text' => $row["memo"],
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $rm
-                    );
-                }
+            if(($msg && strpos($row["memo"], $msg) !== false) || $msg == false){
+              switch ($row["type"]) {
+                case 'text':
+                  $json[] = array(
+                      'type' => 'article',
+                      'id' => $row["id"],
+                      'title' => ($invertmemodata == 1) ? $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅" : $row["memo"],
+                      'description' => ($invertmemodata == 1) ? $row["memo"] : $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅",
+                      'message_text' => $row["memo"],
+                      'parse_mode' => 'HTML',
+                      'reply_markup' => $rm
+                  );
+                  break;
+
+                case 'voice':
+                  $json[] = array(
+                      'type' => 'voice',
+                      'id' => $row["id"],
+                      'voice_file_id' => $row["file_id"],
+                      'title' => $lang['datememo'] . date($dateformat, $row['timestamp']) . " 📅"
+                  );
+                  break;
+              }
             }
         }
     }
@@ -177,7 +156,11 @@ if ($update["chosen_inline_result"]) {
         $dbuser->query("DELETE FROM BNoteBot_memo WHERE id = '" . $data[1] . "'");
         sm($userID, $lang["deleted"]);
         acq($update["callback_query"]["id"], $textalert, $alert);
-        em($userID, $update["callback_query"]["message"]["message_id"], $update["callback_query"]["message"]["text"]);
+        if ($update["callback_query"]["message"]["voice"]) {
+          dm($chatID, $msgid);
+        } else {
+          em($userID, $msgid, $update["callback_query"]["message"]["text"]);
+        }
         exit();
     } elseif ($data[0] == "reply" AND $status == NULL AND $userID == $owner) {
         $dbuser->query("UPDATE BNoteBot_user SET status='reply-" . $data[1] . "' WHERE userID='$userID'");
@@ -198,13 +181,18 @@ if ($update["chosen_inline_result"]) {
                 $reminders = "\n\n" . $lang['reminders'] . "\n" . $reminders;
             }
         }
-        if($set[$i]['memo'] == null){
+        if($set[$i] == null){
             $text = $lang['end'];
             $menu[] = array(array(
                 "text" => $lang['back'],
                 "callback_data" => "back-0-" . $i));
+            if ($update["callback_query"]["message"]["voice"]) {
+              dm($chatID, $msgid);
+              sm($chatID, $text, $menu, false, false, false, false, true);
+            } else {
+              em($userID, $msgid, $text, $menu, true);
+            }
         } else {
-            $text = $set[$i]['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "📅" . $reminders;
             $menu[] = array(array(
                 "text" => $lang['back'],
                 "callback_data" => "back-0-" . $i), array(
@@ -218,6 +206,24 @@ if ($update["chosen_inline_result"]) {
             $menu[] = array(array(
                 "text" => $lang['showmore'],
                 "callback_data" => "showmore-0-" . $i));
+
+            switch ($set[$i]['type']) {
+              case 'text':
+                $text = $set[$i]['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "📅" . $reminders;
+                if ($update["callback_query"]["message"]["voice"]) {
+                  dm($chatID, $msgid);
+                  sm($chatID, $text, $menu, false, false, false, false, true);
+                } else {
+                  em($userID, $msgid, $text, $menu, true);
+                }
+                break;
+
+              case 'voice':
+                $text = $lang['duration'] . $set[$i]['duration'] . "s\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "📅" . $reminders;
+                dm($chatID, $msgid);
+                sv($chatID, $set[$i]['file_id'], $text, $menu, false, false, false, true);
+                break;
+            }
         }
     } else if($data[0] == "back"){
         $i = $data[2] - 1;
@@ -232,7 +238,6 @@ if ($update["chosen_inline_result"]) {
                 $reminders = "\n\n" . $lang['reminders'] . "\n" . $reminders;
             }
         }
-        $text = $set[$i]['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "📅" . $reminders;
         if($i == 0){
             $menu[] = array(array(
                 "text" => $lang['next'],
@@ -252,16 +257,48 @@ if ($update["chosen_inline_result"]) {
         $menu[] = array(array(
             "text" => $lang['showmore'],
             "callback_data" => "showmore-0-" . $i));
+
+        switch ($set[$i]['type']) {
+          case 'text':
+            $text = $set[$i]['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "📅" . $reminders;
+            if ($update["callback_query"]["message"]["voice"]) {
+              dm($chatID, $msgid);
+              sm($chatID, $text, $menu, false, false, false, false, true);
+            } else {
+              em($userID, $msgid, $text, $menu, true);
+            }
+            break;
+
+          case 'voice':
+            $text = $lang['duration'] . $set[$i]['duration'] . "s\n" . $lang['datememo'] . date($dateformat, $set[$i]['timestamp']) . "📅" . $reminders;
+            dm($chatID, $msgid);
+            sv($chatID, $set[$i]['file_id'], $text, $menu, false, false, false, true);
+            break;
+        }
     } else if($data[0] == "delete"){
-        $text = $set[$data[2]]['memo'] . "\n\n" . $lang['confdelete'];
         $menu[] = array(array(
             "text" => $lang['delete'],
             "callback_data" => "confdelete-0-" . $data[2] . "-" .  $set[$data[2]]['id']), array(
             "text" => $lang['no'],
             "callback_data" => "back-0-" . ($data[2]+1)));
+        switch ($set[$data[2]]['type']) {
+          case 'text':
+            $text = $set[$data[2]]['memo'] . "\n\n" . $lang['confdelete'];
+            em($userID, $msgid, $text, $menu, true);
+            break;
+
+          default:
+            emc($userID, $msgid, $lang['confdelete'], $menu);
+            break;
+        }
     } else if($data[0] == "confdelete"){
         $dbuser->query("DELETE FROM BNoteBot_memo WHERE id = '" . $data[3] . "'");
-        $text = $lang['deleted'];
+        if ($update["callback_query"]["message"]["voice"]) {
+          dm($chatID, $msgid);
+          sm($chatID, $lang['deleted']);
+        } else {
+          em($userID, $msgid, $lang['deleted']);
+        }
     } else if($data[0] == "toggle"){
         if($data[2] == "invertmemodata"){
             if($invertmemodata == 0){ $toset = 1; $textalert = $lang['enabled']; } else { $toset = 0; $textalert = $lang['disabled']; }
@@ -278,12 +315,15 @@ if ($update["chosen_inline_result"]) {
                 "callback_data" => "toggle-0-justwritemode"));
             $text = $lang['justwritemodesettings'];
         }
+        em($userID, $msgid, $text, $menu, true);
     } else if($data[0] == "confdeleteall"){
         $dbuser->query("DELETE FROM BNoteBot_memo WHERE userID = '" . $userID ."'");
         $dbuser->query("UPDATE BNoteBot_user SET notes='0' WHERE userID='$userID'");
         $text = $lang['deleted'];
+        em($userID, $msgid, $text);
     } else if($data[0] == "confdeleteallno"){
         $text = $lang['cancelled'];
+        em($userID, $msgid, $text);
     } else if ($data[0] == "reminder") {
       $menu[] = array(array(
         "text" => $lang['add'],
@@ -308,12 +348,23 @@ if ($update["chosen_inline_result"]) {
         "text" => $lang['back'],
         "callback_data" => "back-0-" . ($data[2]+1)
       ));
-      $text = $set[$data[2]]['memo'] . "\n\n" . $lang['reminderman'] . "\n\n" . $reminders;
+      $text = $lang['reminderman'] . "\n\n" . $reminders;
+      if ($update["callback_query"]["message"]["voice"]) {
+        dm($chatID, $msgid);
+        sm($chatID, $text, $menu, false, false, false, false, true);
+      } else {
+        em($userID, $msgid, $text, $menu, true);
+      }
     } else if($data[0] == "remindme"){
-        $text = $set[$data[2]]['memo'];
         $dbuser->query("UPDATE BNoteBot_user SET status='addremind-" . $data[2] . "' WHERE userID='$userID'");
         $menur[] = array($lang['remindmetut']);
         $menur[] = array($lang['cancel']);
+        if ($set[$data[2]]['type'] == 'voice') {
+          dm($chatID, $msgid);
+          sv($chatID, $set[$data[2]]['file_id']);
+        } else {
+          em($userID, $msgid, $set[$data[2]]['memo']);
+        }
         sm($userID, $lang['remindmetxt'], $menur);
     } else if($data[0] == "deletereminder"){
       $query = "SELECT * FROM BNoteBot_reminder WHERE memoid = '" . $data[2] . "' ORDER by timestamp DESC";
@@ -376,15 +427,21 @@ if ($update["chosen_inline_result"]) {
         }
       }
     } else if($data[0] == "retrodate"){
-        $text = $set[$data[2]]['memo'];
         $dbuser->query("UPDATE BNoteBot_user SET status='retrodate-" . $data[2] . "' WHERE userID='$userID'");
         $menur[] = array($lang['remindmetut']);
         $menur[] = array($lang['cancel']);
+        if ($set[$data[2]]['type'] == 'voice') {
+          dm($chatID, $msgid);
+          sv($chatID, $set[$data[2]]['file_id']);
+        } else {
+          em($userID, $msgid, $set[$data[2]]['memo']);
+        }
         sm($userID, $lang['retrodatetxt'], $menur);
     } else if($data[0] == "edit"){
         $text = $set[$data[2]]['memo'];
         $dbuser->query("UPDATE BNoteBot_user SET status='edit-" . $data[2] . "' WHERE userID='$userID'");
         $menur[] = array($lang['cancel']);
+        em($userID, $msgid, $text);
         sm($userID, $lang['edittxt'], $menur);
     } else if ($data[0] == "showmore") {
         if($data[2] == 0){
@@ -403,14 +460,19 @@ if ($update["chosen_inline_result"]) {
             "callback_data" => "delete-0-" . $data[2]), array(
             "text" => $lang['remindme'],
             "callback_data" => "reminder-0-" . $data[2]));
-        $menu[] = array(array(
-            "text" => $lang['edit'],
-            "callback_data" => "edit-0-" . $data[2]), array(
-            "text" => $lang['date'],
-            "callback_data" => "retrodate-0-" . $data[2]));
+        if ($set[$data[2]]['type'] == 'voice') {
+          $menu[] = array(array(
+              "text" => $lang['date'],
+              "callback_data" => "retrodate-0-" . $data[2]));
+        } else {
+          $menu[] = array(array(
+              "text" => $lang['edit'],
+              "callback_data" => "edit-0-" . $data[2]), array(
+              "text" => $lang['date'],
+              "callback_data" => "retrodate-0-" . $data[2]));
+        }
         emk($chatID, $msgid, $menu);
     }
-    em($userID, $msgid, $text, $menu, true);
     acq($update["callback_query"]["id"], $textalert, $alert);
 }
 
@@ -450,11 +512,14 @@ if($status == "select"){
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
         menu($lang['cancelled']);
     } else {
-        if($msg == ""){
-            menu($lang['onlytxt']);
+        if ($msg) {
+          $dbuser->query("INSERT INTO BNoteBot_memo (userID, type, memo, timestamp) VALUES ('$userID', 'text', '" . $dbuser->real_escape_string($msg) . "', '" . time() . "')");
+          menu($lang['saved']);
+        } elseif($update["message"]["voice"]) {
+          $dbuser->query("INSERT INTO BNoteBot_memo (userID, type, file_id, duration, timestamp) VALUES ('$userID', 'voice', '" . $update["message"]["voice"]["file_id"] . "', '". $update["message"]["voice"]["duration"] ."', '" . time() . "')");
+          menu($lang['saved']);
         } else {
-            $dbuser->query("INSERT INTO BNoteBot_memo (userID, memo, timestamp) VALUES ('$userID', '" . $dbuser->real_escape_string($msg) . "', '" . time() . "')");
-            menu($lang['saved']);
+          menu($lang['onlytxt']);
         }
         $dbuser->query("UPDATE BNoteBot_user SET status='' WHERE userID='$userID'");
     }
@@ -558,7 +623,7 @@ if($status == "select"){
     if($msg == $lang['addmemo']){
         $dbuser->query("UPDATE BNoteBot_user SET status='addmemo' WHERE userID='$userID'");
         $menu[] = array($lang['cancel']);
-        sm($chatID, $lang['addmemotext'], $menu, 'HTML', false, false, true);
+        sm($chatID, $lang['addmemotext_v2'], $menu, 'HTML', false, false, true);
     } else if($msg == $lang['settings']){
         setmenu($lang['settings']);
     } else if($msg == $lang['feedback']){
@@ -580,7 +645,7 @@ if($status == "select"){
                     $reminders = "\n\n" . $lang['reminders'] . "\n" . $reminders;
                 }
             }
-            $text = $set['0']['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set['0']['timestamp']) . "📅" . $reminders;
+
             $menu[] = array(array(
                 "text" => $lang['next'],
                 "callback_data" => "next-0-0"));
@@ -592,7 +657,18 @@ if($status == "select"){
             $menu[] = array(array(
                 "text" => $lang['showmore'],
                 "callback_data" => "showmore-0-0"));
-            sm($chatID, $text, $menu, false, false, false, false, true);
+
+            switch ($set['0']['type']) {
+              case 'text':
+                $text = $set['0']['memo'] . "\n\n" . $lang['datememo'] . date($dateformat, $set['0']['timestamp']) . "📅" . $reminders;
+                sm($chatID, $text, $menu, false, false, false, false, true);
+                break;
+
+              case 'voice':
+                $text = $lang['duration'] . $set['0']['duration'] . "s\n" . $lang['datememo'] . date($dateformat, $set['0']['timestamp']) . "📅" . $reminders;
+                sv($chatID, $set['0']['file_id'], $text, $menu, false, false, false, true);
+                break;
+            }
         } else {
             sm($chatID, $lang['nomemo']);
         }
@@ -648,13 +724,17 @@ if($status == "select"){
                 inlinemodeset($invertmemodata);
                 break;
             default:
-                if ($update["message"]["text"]) {
+                if ($update["message"]["text"] || $update["message"]["voice"]) {
                   if ($justwritemode) {
-                    $dbuser->query("INSERT INTO BNoteBot_memo (userID, memo, timestamp) VALUES ('$userID', '" . $dbuser->real_escape_string($msg) . "', '" . time() . "')");
+                    if ($update["message"]["text"]) {
+                        $dbuser->query("INSERT INTO BNoteBot_memo (userID, type, memo, timestamp) VALUES ('$userID', 'text', '" . $dbuser->real_escape_string($msg) . "', '" . time() . "')");
+                    } elseif ($update["message"]["voice"]) {
+                        $dbuser->query("INSERT INTO BNoteBot_memo (userID, type, file_id, duration, timestamp) VALUES ('$userID', 'voice', '" . $update["message"]["voice"]["file_id"] . "', '". $update["message"]["voice"]["duration"] ."', '" . time() . "')");
+                    }
                     $menu[] = array(array(
                         "text" => $lang['delete'],
                         "callback_data" => "confdelete-0-0-" .$dbuser->insert_id));
-                    sm($chatID, $lang['saved'] . "\n\n" . $msg, $menu, 'HTML', false, false, false, true);
+                    sm($chatID, $lang['saved'], $menu, 'HTML', false, false, false, true);
                   } else {
                     sm($chatID, $lang['messagenovalid']);
                   }

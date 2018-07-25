@@ -9,7 +9,7 @@ $lang['addmemo'] = "Add memo 📝";
 $lang['info'] = "Info ℹ";
 $lang['vote'] = "Vote ⭐";
 $lang['cancel'] = "Cancel ❌";
-$lang['addmemotext'] = "Write a memo 📝:";
+//$lang['addmemotext'] = "Write a memo 📝:";
 $lang['cancelled'] = "Cancelled ❌";
 $lang['saved'] = "Memo saved! ✅";
 $lang['savedmemo'] = "Saved memo 📖";
@@ -30,7 +30,7 @@ $lang['settingstextinline'] = "💬 - Inline mode
 $lang['invertmemodata'] = "Invert date and memo: ";
 $lang['enabled'] = "Enabled";
 $lang['disabled'] = "Disabled";
-$lang['askdeleteallnote'] = "Delete all notes?❌";
+$lang['askdeleteallnote'] = "Delete all notes? ❌";
 $lang['messagenovalid'] = "Invalid message. If you have issues with the bot type /start to restart.";
 $lang['infomsg'] = "With this Bot you can save notes callable through inline mode! You can also set reminders!
 📝- Save a note and, in a chat box, type @BNoteBot (or select it in the list). A list of all the notes saved in Bot ready to be sent!
@@ -50,7 +50,7 @@ $lang['remindersaved'] = "Reminder saved! ✅";
 $lang['remindmetut'] = "How to write the date 📅";
 $lang['remindmeformat'] = "You must write the date like this: gg.mm.aa hh:mm
 📅 - Example: 15.3.2017 12:15 (that is March 15, 2017 at a quarter past 12), today (at) 21:42, tomorrow (at) 15:10.";
-$lang['date'] = "Date📅";
+$lang['date'] = "Date 📅";
 $lang['retrodatetxt'] = "Write me the new date of the note 🕒";
 $lang['datesaved'] = "Date saved! ✅";
 $lang['settimezone'] = "Set timezone 🕒";
@@ -79,4 +79,8 @@ $lang['showmore'] = "Show more 🔻";
 $lang['justwritemode'] = "Just write mode ✍️";
 $lang['justwritemodesettings'] = "Just write mode ✍️
 Through this mode it's not necessary to use " . $lang["addmemo"] . " button, all you have to do is to write a message and this will be saved into your notes!";
+//Missing in message.pt.php, message.ru.php and message.de.php
+$lang['addmemotext_v2'] = "📝 Write a message or record a voice note:";
+$lang['duration'] = "Duration: ";
+$lang['confdelete'] = "Are you sure you want to delete this memo? ❌";
 ?>

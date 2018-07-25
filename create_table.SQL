@@ -1,9 +1,11 @@
 CREATE TABLE IF NOT EXISTS `BNoteBot_memo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
-  `memo` text NOT NULL,
-  `timestamp` int(11) NOT NULL,
   `type` text,
+  `memo` text,
+  `file_id` text,
+  `duration` int(11) NOT NULL DEFAULT '0',
+  `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `memo` (`memo`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
