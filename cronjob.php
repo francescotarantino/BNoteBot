@@ -45,7 +45,15 @@ while($row = $result->fetch_assoc()) {
   $menu[] = array(array(
     "text" => $lang['delete'],
     "callback_data" => "deleterem-" . $row["memoid"]));
-    sm($row["userID"], $lang['remindertext'] . date("H:i") . ".\n\n" . $row2["memo"], $menu, false, false, false, false, true);
-    $dbuser->query("DELETE FROM BNoteBot_reminder WHERE id = '" . $row["id"] . "'");
+  switch ($row2["type"]) {
+    case 'text':
+      sm($row["userID"], $lang['remindertext'] . date("H:i") . ".\n\n" . $row2["memo"], $menu, false, false, false, false, true);
+      break;
+
+    case 'voice':
+      sv($row["userID"], $row2["file_id"], $lang['remindertext'] . date("H:i"), $menu, false, false, false, true);
+      break;
+  }
+  $dbuser->query("DELETE FROM BNoteBot_reminder WHERE id = '" . $row["id"] . "'");
 }
 ?>

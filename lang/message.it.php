@@ -9,7 +9,7 @@ $lang['addmemo'] = "Aggiungi nota 📝";
 $lang['info'] = "Info ℹ";
 $lang['vote'] = "Vota ⭐";
 $lang['cancel'] = "Annulla ❌";
-$lang['addmemotext'] = "Scrivi una nota📝:";
+//$lang['addmemotext'] = "Scrivi una nota📝:";
 $lang['cancelled'] = "Annullato ❌";
 $lang['saved'] = "Nota salvata! ✅";
 $lang['savedmemo'] = "Note salvate 📖";
@@ -30,7 +30,7 @@ $lang['settingstextinline'] = "💬 - Modalità inline
 $lang['invertmemodata'] = "Inverti data e nota: ";
 $lang['enabled'] = "Abilitato";
 $lang['disabled'] = "Disabilitato";
-$lang['askdeleteallnote'] = "Eliminare tutte le note?❌";
+$lang['askdeleteallnote'] = "Eliminare tutte le note? ❌";
 $lang['messagenovalid'] = "Messaggio non valido. Se hai problemi con il bot scrivi /start per riavviarlo.";
 $lang['infomsg'] = "Con questo Bot puoi salvare delle note richiamabili attraverso la modalità inline! Puoi anche impostare dei promemoria!
 📝 - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!
@@ -47,7 +47,7 @@ $lang['remindmeformat'] = "Devi scrivere la data in questo modo: GG.mm.AAAA hh:m
 📅 - Esempio: 15.3.2017 12:15 (ovvero il 15 marzo 2017 alle 12 e 15), oggi (alle) 13:52, domani (alle) 21:03.";
 $lang['onlytxt'] = "Il Bot supporta solo testo per adesso.";
 $lang['remindersaved'] = "Promemoria salvato! ✅";
-$lang['date'] = "Data📅";
+$lang['date'] = "Data 📅";
 $lang['invaliddate'] = "Data non valida";
 $lang['retrodatetxt'] = "Scrivimi la nuova data della nota 🕒";
 $lang['datesaved'] = "Data salvata! ✅";
@@ -77,4 +77,7 @@ $lang['remindertext'] = "Promemoria🕒\nSono le ";
 $lang['justwritemode'] = "Modalità 'basta scrivere' ✍️";
 $lang['justwritemodesettings'] = "Modalità 'basta scrivere'✍️
 Tramite questa modalità non è più necessario toccare il pulsante " . $lang["addmemo"] . ", basta scrivere un messaggio e questo verrà direttamente salvato nelle tue note!";
+$lang['addmemotext_v2'] = "📝 Scrivi un messaggio o registra una nota vocale:";
+$lang['duration'] = "Durata: ";
+$lang['confdelete'] = "Sei sicuro di voler eliminare la nota? ❌";
 ?>
