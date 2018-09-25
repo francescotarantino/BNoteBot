@@ -1,5 +1,5 @@
 <?php
-//$lang = array();
+$lang = array();
 $lang['welcome'] = "Добро пожаловать! 😊
 С помощью этого бота вы можете сохранять заметки, доступ к которым можно получить через Inline-режим! Вы также можете установить напоминания!
 📝 - Сохраните заметку и в поле чата введите @BNoteBot (или выберите его в списке). Список всех заметок, сохранённых в боте, готов к отправке!
@@ -77,7 +77,7 @@ $lang['remindertext'] = "Reminder🕒\nУстановлено на ";
 $lang['showmore'] = "Подробнее 🔻";
 $lang['justwritemode'] = "Только текстовый режим✍️";
 $lang['justwritemodesettings'] = "Только текстовый режим✍️
-//Through this mode it's not necessary to use " . $lang["addmemo"] . " button, all you have to do is to write a message and this will be saved into your notes!";
+Through this mode it's not necessary to use " . $lang["addmemo"] . " button, all you have to do is to write a message and this will be saved into your notes!";
 //Missing in message.pt.php, message.ru.php and message.de.php
 $lang['addmemotext_v2'] = "📝 Напишите или запишите голосовую заметку:";
 $lang['duration'] = "Длительность: ";
