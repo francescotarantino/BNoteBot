@@ -22,8 +22,5 @@ For example: `https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123e
 > Remember that the TOKEN must start with 'bot' and the BOTURL with 'https://'.
 
 ## Make a donation
-If you like my work, you could make a donation: [PayPal](https://PayPal.me/franci22/2) or [BitCoin](https://paste.ubuntu.com/24299810/).
+If you like my work, you could make a donation: [PayPal](https://paypal.me/francescotar/2) or BitCoin (`1HdkcWUPAAnZ3TDUXNwdrFs6xmMZtNAxcL`).
 **Thank you!**
-
-## Channel
-Follow me on my Channel: [@franci22channel](https://telegram.me/franci22channel) (Italian Version) and [@franci22channel_en](https://telegram.me/franci22channel_en) (English Version).
