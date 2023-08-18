@@ -1,4 +1,5 @@
-# BNoteBot [![Bot](https://img.shields.io/badge/Telegram-%40BNoteBot-blue.svg)](https://telegram.me/BNoteBot)  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# BNoteBot [![Bot](https://img.shields.io/badge/Telegram-%40BNoteBot-blue.svg)](https://telegram.me/BNoteBot)  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://www.gnu.org/licenses/gpl-3.0) ![Maintenance](https://img.shields.io/maintenance/no/2023)
+
 Telegram Bot for save notes callable through inline mode and set reminders!
 
 ![Logo BNoteBot](https://raw.githubusercontent.com/franci22/BNoteBot/master/Logo.png)
@@ -20,7 +21,3 @@ If you want to do it manually use this URL: `https://api.telegram.org/botTOKEN/s
 For example: `https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11/setWebhook?url=https://domain.com/bot.php`
 
 > Remember that the TOKEN must start with 'bot' and the BOTURL with 'https://'.
-
-## Make a donation
-If you like my work, you could make a donation: [PayPal](https://paypal.me/francescotar/2) or BitCoin (`1HdkcWUPAAnZ3TDUXNwdrFs6xmMZtNAxcL`).
-**Thank you!**
