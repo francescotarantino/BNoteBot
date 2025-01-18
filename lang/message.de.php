@@ -8,7 +8,6 @@ Mit diesem Bot kannst du Notizen im Inline-Modus speichern und sogar Erinnerunge
 🇩🇪 - Danke an @JosXa für die Übersetzung.";
 $lang['addmemo'] = "Memo hinzufügen 📝";
 $lang['info'] = "Info ℹ";
-$lang['vote'] = "Abstimmen ⭐";
 $lang['cancel'] = "Abbrechen ❌";
 $lang['addmemotext'] = "Ein Memo schreiben 📝:";
 $lang['cancelled'] = "Abgebrochen ❌";
@@ -35,12 +34,10 @@ $lang['askdeleteallnote'] = "Alle Notizen löschen? ❌";
 $lang['messagenovalid'] = "Falsche Nachricht. Falls du Probleme hast, schicke /start um neu zu starten.";
 $lang['infomsg'] = "Mit diesem Bot kannst du Notizen im Inline-Modus speichern und sogar Erinnerungen einstellen!
 📝 - Speichere eine Notiz und tippe @BNoteBot und dann ein Leerzeichen in irgendeinem Chat. Eine Liste aller gespeicherten Notizen werden im Bot gespeichert und sind dann bereit gesendet zu werden.
-✅ - Remember to follow me on @franci22channel for all communications (only 🇮🇹).
 🌍 - Vergiss nicht, in den Einstellungen deine Zeitzone zu anzupassen!";
 $lang['subchannel'] = "Channel abonnieren";
-$lang['votemsg'] = "Falls du mich unterstützen willst, vote für meinen Bot auf @StoreBot.";
 $lang['feedback'] = "Feedback 📫";
-$lang['feedbacktext'] = "📫 - Falls du Probleme findest oder Anregungen hast, schreibe mir im Chat (@franci22) oder antworte auf diese Nachricht:";
+$lang['feedbacktext'] = "📫 - Falls du Probleme findest oder Anregungen hast, antworte auf diese Nachricht:";
 $lang['thanksfeedback'] = "Vielen Dank für das Feedback! ✅";
 $lang['onlytxt'] = "Der Bot unterstützt bisher nur Text.";
 $lang['github'] = "GitHub 📂";
@@ -63,8 +60,6 @@ $lang['edit'] = "Bearbeiten 📝";
 $lang['edittxt'] = "Sende mir den Text dieser Notiz 📝";
 $lang['reminders'] = "Erinnerungen: 🕒";
 $lang['uhareminders'] = "Du hast schon Erinnerungen für dieses Memo: 🕒";
-$lang['supportme'] = "Unterstützen 💚";
-$lang['supportmetext'] = "Meine bots sind umsonst und ohne Werbung. Du kannst mich aber durch eine kleine Spende über PayPal oder BitCoin unterstützen. Außerdem hilft ein vote beim @StoreBot ungemein. Vielen Dank 💚";
 $lang['opensource'] = "This bot is open source under GPL 3.0 License, you can find the code on GitHub.";
 $lang['reminderman'] = "Erinnerungen bearbeiten 🕒";
 $lang['add'] = "Hinzufügen ➕";

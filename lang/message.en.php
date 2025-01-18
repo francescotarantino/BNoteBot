@@ -4,10 +4,9 @@ $lang['welcome'] = "Welcome to the Bot! 😊
 With this Bot you can save notes callable through inline mode! You can also set reminders!
 📝 - Save a note and, in a chat box, type @BNoteBot (or select it in the list). A list of all the notes saved in Bot ready to be sent!
 🌍 -  Set your timezone in the settings for reliable reminder.
-💚 - If you like this Bot, find out how to support me using Support Me 💚 button.";
+This bot is no longer maintained.";
 $lang['addmemo'] = "Add memo 📝";
 $lang['info'] = "Info ℹ";
-$lang['vote'] = "Vote ⭐";
 $lang['cancel'] = "Cancel ❌";
 //$lang['addmemotext'] = "Write a memo 📝:";
 $lang['cancelled'] = "Cancelled ❌";
@@ -34,12 +33,10 @@ $lang['askdeleteallnote'] = "Delete all notes? ❌";
 $lang['messagenovalid'] = "Invalid message. If you have issues with the bot type /start to restart.";
 $lang['infomsg'] = "With this Bot you can save notes callable through inline mode! You can also set reminders!
 📝- Save a note and, in a chat box, type @BNoteBot (or select it in the list). A list of all the notes saved in Bot ready to be sent!
-✅ - Remember to follow me on @franci22channel for all communications (only 🇮🇹).
 🌍-  Set your timezone in the settings for reliable reminder.";
 $lang['subchannel'] = "Subscribe to channel";
-$lang['votemsg'] = "If you want to support me, vote my Bot on @StoreBot.";
 $lang['feedback'] = "Feedback 📫";
-$lang['feedbacktext'] = "📫 - If this Bot has problems or you want to suggest something, write me in chat (@franci22) or send me a message now:";
+$lang['feedbacktext'] = "📫 - If this Bot has problems or you want to suggest something, send me a message now:";
 $lang['thanksfeedback'] = "Thanks for the feedback! ✅";
 $lang['onlytxt'] = "Bot supports only text for now.";
 $lang['github'] = "GitHub 📂";
@@ -64,8 +61,6 @@ $lang['edit'] = "Edit 📝";
 $lang['edittxt'] = "Write me the new text of the note 📝";
 $lang['reminders'] = "Reminders: 🕒";
 $lang['uhareminders'] = "You already have reminders for this memo: 🕒";
-$lang['supportme'] = "Support Me 💚";
-$lang['supportmetext'] = "My bots are free and without advertisement, you can support me by making a little donation with PayPal or BitCoin and voting my bot on @StoreBot. Thank you so much 💚";
 $lang['opensource'] = "This bot is open source under GPL 3.0 License, you can find the code on GitHub.";
 $lang['reminderman'] = "Reminder management 🕒";
 $lang['add'] = "Add ➕";

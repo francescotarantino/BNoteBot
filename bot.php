@@ -716,29 +716,13 @@ if ($status == "select") {
             sm($chatID, $lang['nomemo']);
         }
     } else if (isset($lang['info']) && $msg == $lang['info']) {
-        $menu[] = array(array(
-            "text" => $lang['subchannel'],
-            "url" => "https://telegram.me/joinchat/AeDFuD2cuxFaLAyV6aly5g"
-        ));
         sm($chatID, $lang['infomsg'], $menu, 'HTML', false, false, false, true);
     } else if (isset($lang['github']) && $msg == $lang['github']) {
         $menu[] = array(array(
             "text" => $lang['github'],
-            "url" => "https://github.com/franci22/BNoteBot"
+            "url" => "https://github.com/francescotarantino/BNoteBot"
         ));
         sm($chatID, $lang['opensource'], $menu, 'HTML', false, false, false, true);
-    } else if (isset($lang['supportme']) && $msg == $lang['supportme']) {
-        $menu[] = array(array(
-            "text" => $lang['vote'],
-            "url" => "https://telegram.me/storebot?start=bnotebot"
-        ), array(
-            "text" => "PayPal 💳",
-            "url" => "https://paypal.me/franci22"
-        ), array(
-            "text" => "Bitcoin 💰",
-            "url" => "https://paste.ubuntu.com/24299810/"
-        ));
-        sm($chatID, $lang['supportmetext'], $menu, 'HTML', false, false, false, true);
     } else if (isset($lang['inlinemode']) && $msg == $lang['inlinemode']) {
         inlinemodeset($invertmemodata);
     } else if (isset($lang['deleteallnote']) && $msg == $lang['deleteallnote']) {
@@ -821,7 +805,7 @@ function menu($text)
     global $chatID;
     $menu[] = array($lang['addmemo']);
     $menu[] = array($lang['savedmemo']);
-    $menu[] = array($lang['info'], $lang['supportme']);
+    $menu[] = array($lang['info']);
     $menu[] = array($lang['feedback']);
     $menu[] = array($lang['settings'], $lang['github']);
     sm($chatID, $text, $menu, 'HTML', false, false, true);

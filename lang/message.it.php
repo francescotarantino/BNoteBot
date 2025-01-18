@@ -3,11 +3,9 @@ $lang = array();
 $lang['welcome'] = "Benvenuto nel Bot!😊
 Con questo Bot puoi salvare delle note richiamabili attraverso la modalità inline! Puoi anche impostare dei promemoria!
 📝 - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!
-✅ - Ricordati di seguirmi sul canale @franci22channel per tutte le comunicazioni.
-💚 - Se ti piace questo bot, scopri come supportarmi premendo il tasto Supportami 💚.";
+Questo bot non è più mantenuto.";
 $lang['addmemo'] = "Aggiungi nota 📝";
 $lang['info'] = "Info ℹ";
-$lang['vote'] = "Vota ⭐";
 $lang['cancel'] = "Annulla ❌";
 //$lang['addmemotext'] = "Scrivi una nota📝:";
 $lang['cancelled'] = "Annullato ❌";
@@ -33,12 +31,10 @@ $lang['disabled'] = "Disabilitato";
 $lang['askdeleteallnote'] = "Eliminare tutte le note? ❌";
 $lang['messagenovalid'] = "Messaggio non valido. Se hai problemi con il bot scrivi /start per riavviarlo.";
 $lang['infomsg'] = "Con questo Bot puoi salvare delle note richiamabili attraverso la modalità inline! Puoi anche impostare dei promemoria!
-📝 - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!
-✅ - Ricordati di seguirmi sul canale @franci22channel per tutte le comunicazioni.";
+📝 - Salva una nota e, in una chat, scrivi @BNoteBot (o selezionalo se appare appena scrivi @). Comparirà una lista di tutte le note salvate nel Bot pronte per essere inviate!";
 $lang['subchannel'] = "Iscriviti al canale";
-$lang['votemsg'] = "Se vuoi supportarmi, vota il mio Bot su @StoreBot.";
 $lang['feedback'] = "Feedback 📫";
-$lang['feedbacktext'] = "📫 - Se il Bot ha problemi o vuoi suggerirmi qualcosa, scrivimi in chat (@franci22) o inviami un messaggio adesso:";
+$lang['feedbacktext'] = "📫 - Se il Bot ha problemi o vuoi suggerirmi qualcosa, inviami un messaggio adesso:";
 $lang['thanksfeedback'] = "Grazie per il feedback! ✅";
 $lang['remindme'] = "Promemoria 🕒";
 $lang['remindmetxt'] = "Quando ti devo ricordare questa nota? 🕒";
@@ -62,8 +58,6 @@ $lang['edit'] = "Modifica 📝";
 $lang['edittxt'] = "Inviami il nuovo testo della nota 📝";
 $lang['reminders'] = "Promemoria: 🕒";
 $lang['uhareminders'] = "Hai già dei promemoria per questa nota: 🕒";
-$lang['supportme'] = "Supportami 💚";
-$lang['supportmetext'] = "I miei Bot sono gratuiti e privi di pubblicità, puoi supportarmi facendo una piccola donazione via PayPal o BitCoin, iscrivendoti al mio canale (@franci22channel) e votando il Bot su @StoreBot. Grazie 💚";
 $lang['github'] = "GitHub 📂";
 $lang['opensource'] = "Questo Bot è open source sotto licenza GPL 3.0, puoi trovarne il codice completo su GitHub.";
 $lang['reminderman'] = "Gestione promemoria 🕒";
